@@ -3,10 +3,12 @@
     <div class="flex flex-col">
       <div class="md:flex mb-6" *ngFor="let question of questionsList">
         <div class="md:w-full px-3">
-          <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="application-link">
+          <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" [for]="question.id">
             {{question.question_str}}
           </label>
-          <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="application-link"
+          <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
+                 required
+                 [id]="question.id"
                  type="text" placeholder="Wpisz odpowiedź">
         </div>
       </div>
