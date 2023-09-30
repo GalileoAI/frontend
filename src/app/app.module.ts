@@ -18,6 +18,9 @@ import {LandingComponent} from "./components/landing/landing.component";
 import { SurpriseMeComponent } from './components/surprise-me/surprise-me.component';
 import { SurpriseMeFormComponent } from './view/surprise-me-form/surprise-me-form.component';
 import { SurpriseMeResultComponent } from './view/surprise-me-result/surprise-me-result.component';
+import { DeklaracjaDostepnosciComponent } from './components/deklaracja-dostepnosci/deklaracja-dostepnosci.component';
+import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/polityka-prywatnosci.component';
+import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { SurpriseMeResultComponent } from './view/surprise-me-result/surprise-me
     HavePlanResultComponent,
     SurpriseMeComponent,
     SurpriseMeFormComponent,
-    SurpriseMeResultComponent
+    SurpriseMeResultComponent,
+    DeklaracjaDostepnosciComponent,
+    PolitykaPrywatnosciComponent,
+    WarunkiKorzystaniaComponent
   ],
   imports: [
     BrowserModule,

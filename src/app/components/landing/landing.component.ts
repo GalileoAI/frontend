@@ -5,6 +5,7 @@ interface Tile {
   subtitle: string;
   icon: string;
   link: string;
+  button: string;
 }
 
 @Component({
@@ -15,16 +16,18 @@ interface Tile {
 export class LandingComponent {
   tiles: Tile[] = [
     {
-      title: 'Mam plan',
+      title: 'Mam na siebie plan',
       subtitle: 'Wybierz plan treningowy',
-      icon: 'directions_run',
+      icon: '/assets/tile2.png',
       link: '/mam-plan',
+      button: 'Działajmy',
     },
     {
-      title: 'Zaskocz mnie',
+      title: 'Szukam ścieki zawodowej',
       subtitle: 'Zobacz losowy plan treningowy',
-      icon: 'casino',
+      icon: '/assets/tile1.png',
       link: '/zaskocz-mnie',
+      button: 'Zaskocz mnie',
     },
   ];
 }
