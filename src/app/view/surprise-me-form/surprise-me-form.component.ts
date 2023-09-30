@@ -4,6 +4,7 @@ import {QuestionsService} from "../../services/questions.service";
 import {FormType} from "../../model/types";
 import {Observable} from "rxjs";
 import {FormInterface} from "../../model/interfaces";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-surprise-me-form',
@@ -16,33 +17,43 @@ export class SurpriseMeFormComponent implements OnInit{
   @Output()
   sendRequestEmitter = new EventEmitter<boolean>();
 
-  constructor(private questionsService: QuestionsService) {
+  form = new FormGroup({});
+
+  constructor(private questionsService: QuestionsService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.getQuestionsList('after').subscribe({
-      next: (data) => {
-        const tmp = {
-          questions: [
-            {
-              id: '1',
-              question_str: 'Label1',
-              answer_str: ''
-            }
-          ]
+    const tmp = {
+      questions: [
+        {
+          id: '1',
+          question_str: 'Label1',
+          answer_str: ''
         }
-        /*this.questionsList =
-          data.questions.map((el) =>
-            new QuestionClass(el.id, el.question_str, el.answer_str));*/
-        this.questionsList =
-          tmp.questions.map((el) =>
-            new QuestionClass(el.id, el.question_str, el.answer_str));
+      ]
+    }
+    this.questionsList =
+      tmp.questions.map((el) =>
+        new QuestionClass(el.id, el.question_str, el.answer_str));
+    this.questionsList.forEach(
+      (q) => {
+        this.form.addControl(q.id,
+          this.fb.control('', [Validators.required, Validators.max(250)])
+        );
       }
-    });
+    )
+    /*this.getQuestionsList('after').subscribe({
+      next: (data) => {
+
+        /!*this.questionsList =
+          data.questions.map((el) =>
+            new QuestionClass(el.id, el.question_str, el.answer_str));*!/
+      }
+    });*/
   }
 
   private getQuestionsList(type: FormType): Observable<FormInterface> {
-    return this.questionsService.getQuestionsList('after');
+    return this.questionsService.getQuestionsList('before');
   }
 
   send()
