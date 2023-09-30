@@ -21,6 +21,7 @@ import { SurpriseMeResultComponent } from './view/surprise-me-result/surprise-me
 import { DeklaracjaDostepnosciComponent } from './components/deklaracja-dostepnosci/deklaracja-dostepnosci.component';
 import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/polityka-prywatnosci.component';
 import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ export class AppModule {constructor(library: FaIconLibrary) {
     faFacebook,
     faTwitter,
     faLinkedin,
-    faYoutube
+    faYoutube,
+    faArrowLeft
   );
 } }
