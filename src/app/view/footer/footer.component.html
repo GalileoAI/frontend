@@ -5,13 +5,22 @@
         <h5 class="text-xl font-bold mb-6">Menu</h5>
         <ul class="list-none footer-links">
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Strona główna</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+            (click)="changePage()">
+              Strona główna
+            </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mam plan</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+               (click)="changePage('mam-plan')">
+              Mam plan
+            </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Szukam swojej ścieżki</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+               (click)="changePage('zaskocz-mnie')">
+              Szukam swojej ścieżki
+            </a>
           </li>
         </ul>
       </div>
@@ -19,19 +28,22 @@
         <h5 class="text-xl font-bold mb-6">Zasoby</h5>
         <ul class="list-none footer-links">
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Zasoby</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+               (click)="changePage('deklaracja-dostepnosci')">
+              Deklaracja dostępności
+            </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Deklaracja dostępności</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+               (click)="changePage('polityka-prywatnosci')">
+              Polityka prywatności i polityka cookies
+            </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Polityka prywatności i polityka cookies</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Warunki korzystania</a>
-          </li>
-          <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Mapa strony</a>
+            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
+               (click)="changePage('warunki-korzystania')">
+              Warunki korzystania
+            </a>
           </li>
         </ul>
       </div>
