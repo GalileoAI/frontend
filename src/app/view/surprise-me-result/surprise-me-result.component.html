@@ -1,5 +1,14 @@
-<div class="px-20">
-  <div class="md:flex mb-6">
-    <p>test</p>
+<h3 class="mx-4 text-xl font-bold">Wyniki</h3>
+<div class="px-4 mt-10">
+  <div class="flex flex-col mb-6">
+    <ng-container *ngFor="let position of positionsList">
+      <h4 class="italic">kierunek: {{position.position}}</h4>
+        <ng-container *ngFor="let school of position.schools">
+          <div class="shadow p-20 w-full mb-4">
+            <h2>{{school.name}}</h2>
+            {{school.description}}
+          </div>
+        </ng-container>
+    </ng-container>
   </div>
 </div>

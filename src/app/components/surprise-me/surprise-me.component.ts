@@ -18,6 +18,66 @@ export class SurpriseMeComponent implements OnInit{
   hasResults = false;
   positionsList: PositionClass[] = [];
 
+  tempQuestions = {
+    header: 'questionare',
+    questions: [
+      {
+        id: '1',
+        question_str: 'Pytanie 1',
+        answer_str: ''
+      },
+      {
+        id: '2',
+        question_str: 'Pytanie 2',
+        answer_str: ''
+      },
+      {
+        id: '3',
+        question_str: 'Pytanie 3',
+        answer_str: ''
+      }
+    ]
+  } as FormInterface
+  tempResponse = {
+    header: 'answers',
+    positions: [
+      {
+        position: "test1",
+        schools: [
+          {
+            name: 'Szkoła testowa',
+            description: 'Opis testowy'
+          },
+          {
+            name: 'Szkoła testowa2',
+            description: 'Opis testowy2'
+          },
+          {
+            name: 'Szkoła testowa3',
+            description: 'Opis testowy3'
+          }
+        ]
+      },
+      {
+        position: "test2",
+        schools: [
+          {
+            name: 'Lorem ipsum',
+            description: 'Opis testowy2'
+          },
+          {
+            name: 'Lorem ipsum2',
+            description: 'Opis testowy22'
+          },
+          {
+            name: 'Lorem ipsum3',
+            description: 'Opis testowy23'
+          }
+        ]
+      }
+    ]
+  } as ResponseInterface
+
   constructor(private questionsService: QuestionsService, private fb: FormBuilder) {
   }
 
@@ -35,7 +95,21 @@ export class SurpriseMeComponent implements OnInit{
           }
         );
       },
-      error: (err) => console.error('Wystąpił błąd podczas pobierania listy pytań', err)
+      error: (err) => {
+        console.error('Wystąpił błąd podczas pobierania listy pytań', err);
+        if (this.questionsList.length < 1)
+        {
+          this.questionsList = this.tempQuestions.questions.map((el) =>
+            new QuestionClass(el.id, el.question_str, el.answer_str));
+        }
+        this.questionsList.forEach(
+          (q) => {
+            this.formQuestions.addControl(q.id,
+              this.fb.control('', [Validators.required, Validators.max(250)])
+            );
+          }
+        );
+      }
     });
   }
 
@@ -46,7 +120,13 @@ export class SurpriseMeComponent implements OnInit{
       next: (data) => {
         this.positionsList = data.positions.map((el) => new PositionClass(el.position, el.schools));
       },
-      error: (err) => console.error('Wystąpił błąd podczas pobierania wyników', err)
+      error: (err) => {
+        console.error('Wystąpił błąd podczas pobierania wyników', err);
+        if (this.positionsList.length < 1)
+        {
+          this.positionsList = this.tempResponse.positions.map((el) => new PositionClass(el.position, el.schools));
+        }
+      }
     })
   }
 
