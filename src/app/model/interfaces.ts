@@ -16,3 +16,18 @@ export interface QuestionInterface {
   question_str: string;
   answer_str: string;
 }
+
+export interface PositionInterface {
+  position: string;
+  schools: SchoolInterface[];
+}
+
+export interface SchoolInterface {
+  name: string;
+  description: string;
+}
+
+export interface ResponseInterface {
+  header: string;
+  positions: PositionInterface[];
+}

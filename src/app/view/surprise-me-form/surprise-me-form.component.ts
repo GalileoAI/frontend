@@ -3,7 +3,7 @@ import {QuestionClass} from "../../model/classes";
 import {QuestionsService} from "../../services/questions.service";
 import {FormType} from "../../model/types";
 import {Observable} from "rxjs";
-import {FormInterface} from "../../model/interfaces";
+import {FormInterface, ResponseInterface} from "../../model/interfaces";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
@@ -23,37 +23,35 @@ export class SurpriseMeFormComponent implements OnInit{
   }
 
   ngOnInit() {
-    const tmp = {
-      questions: [
-        {
-          id: '1',
-          question_str: 'Label1',
-          answer_str: ''
-        }
-      ]
-    }
-    this.questionsList =
-      tmp.questions.map((el) =>
-        new QuestionClass(el.id, el.question_str, el.answer_str));
-    this.questionsList.forEach(
-      (q) => {
-        this.form.addControl(q.id,
-          this.fb.control('', [Validators.required, Validators.max(250)])
-        );
-      }
-    )
     this.getQuestionsList().subscribe({
       next: (data) => {
-
-        /*this.questionsList =
+        this.questionsList =
           data.questions.map((el) =>
-            new QuestionClass(el.id, el.question_str, el.answer_str));*/
+            new QuestionClass(el.id, el.question_str, el.answer_str));
+        this.questionsList.forEach(
+          (q) => {
+            this.form.addControl(q.id,
+              this.fb.control('', [Validators.required, Validators.max(250)])
+            );
+          }
+        );
       }
     });
+
+    this.postAnswers().subscribe({
+      next: (val) => {
+        console.log('surprise me! post', val)
+      }
+    });
+
   }
 
   private getQuestionsList(): Observable<FormInterface> {
     return this.questionsService.getQuestionsList('before');
+  }
+
+  private postAnswers(): Observable<ResponseInterface> {
+    return this.questionsService.postAnswers({});
   }
 
   send()
