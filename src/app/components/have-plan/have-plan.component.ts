@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HavePlanComponent {
   hasResults = false;
+
+  getData(e: boolean)
+  {
+    this.hasResults = true;
+  }
 }

@@ -53,7 +53,7 @@ export class SurpriseMeFormComponent implements OnInit{
   }
 
   private getQuestionsList(type: FormType): Observable<FormInterface> {
-    return this.questionsService.getQuestionsList('after');
+    return this.questionsService.getQuestionsList('before');
   }
 
   send()
