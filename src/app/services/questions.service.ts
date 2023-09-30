@@ -17,7 +17,8 @@ export class QuestionsService {
   public getQuestionsList(type: FormType): Observable<FormInterface> {
     const url = QuestionsService.QUESTIONS_GET_API_URL;
     const headers = new HttpHeaders();
-    /*headers.set('Content-Type', 'application/json');*/
+    headers.set('Content-Type', 'application/json');
+    headers.set('Ngrok-skip-browser-warning', 'test');
     const params = new HttpParams();
     /*params.set('type', type);*/
     const options = {params};
