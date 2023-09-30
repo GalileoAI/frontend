@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultComponent } from './result.component';
+import { HavePlanResultComponent } from './have-plan-result.component';
 
 describe('ResultComponent', () => {
-  let component: ResultComponent;
-  let fixture: ComponentFixture<ResultComponent>;
+  let component: HavePlanResultComponent;
+  let fixture: ComponentFixture<HavePlanResultComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ResultComponent]
+      declarations: [HavePlanResultComponent]
     });
-    fixture = TestBed.createComponent(ResultComponent);
+    fixture = TestBed.createComponent(HavePlanResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

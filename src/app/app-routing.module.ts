@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
+import { HavePlanComponent } from './components/have-plan/have-plan.component';
 import { LandingComponent } from './components/landing/landing.component';
+import {SurpriseMeComponent} from "./components/surprise-me/surprise-me.component";
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'home', component: MainComponent },
+  { path: 'mam-plan', component: HavePlanComponent },
+  { path: 'zaskocz-mnie', component: SurpriseMeComponent},
 ];
 
 @NgModule({
