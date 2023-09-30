@@ -7,8 +7,8 @@
     </div>
   </div>
 </div>
-<div class="">
-  <app-have-plan-form *ngIf="!hasResults"></app-have-plan-form>
-  <app-have-plan-result *ngIf="hasResults"></app-have-plan-result>
+<div class="container mx-auto">
+  <app-surprise-me-form *ngIf="!hasResults" (sendRequestEmitter)="getData($event)"></app-surprise-me-form>
+  <app-surprise-me-result *ngIf="hasResults"></app-surprise-me-result>
 </div>
 <app-footer></app-footer>
