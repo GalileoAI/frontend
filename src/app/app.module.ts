@@ -14,13 +14,17 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faFacebook, faLinkedin, faStackOverflow, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
+import {LandingComponent} from "./components/landing/landing.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     FormComponent,
-    LandingComponent
+    LandingComponent,
+    HeaderComponent,
+    FooterComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,
