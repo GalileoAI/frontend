@@ -42,17 +42,17 @@ export class SurpriseMeFormComponent implements OnInit{
         );
       }
     )
-    /*this.getQuestionsList('after').subscribe({
+    this.getQuestionsList().subscribe({
       next: (data) => {
 
-        /!*this.questionsList =
+        /*this.questionsList =
           data.questions.map((el) =>
-            new QuestionClass(el.id, el.question_str, el.answer_str));*!/
+            new QuestionClass(el.id, el.question_str, el.answer_str));*/
       }
-    });*/
+    });
   }
 
-  private getQuestionsList(type: FormType): Observable<FormInterface> {
+  private getQuestionsList(): Observable<FormInterface> {
     return this.questionsService.getQuestionsList('before');
   }
 
