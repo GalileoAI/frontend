@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
 import {Observable, take} from "rxjs";
-import {HttpHeaders, HttpParams} from "@angular/common/http";
 import {FormInterface, QuestionInterface} from "../../model/interfaces";
 import {QuestionClass} from "../../model/classes";
+import {FormType} from "../../model/types";
+import {QuestionsService} from "../../services/questions.service";
 
 @Component({
   selector: 'app-have-plan-form',
@@ -13,11 +13,11 @@ import {QuestionClass} from "../../model/classes";
 export class HavePlanFormComponent implements OnInit{
   questionsList: QuestionClass[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(private questionsService: QuestionsService) {
   }
 
   ngOnInit() {
-    this.getQuestionsList().subscribe({
+    this.getQuestionsList('after').subscribe({
       next: (data) => {
         this.questionsList =
           data.questions.map((el) =>
@@ -26,16 +26,8 @@ export class HavePlanFormComponent implements OnInit{
     });
   }
 
-  private getQuestionsList(): Observable<FormInterface> {
-    const url = `localhost:8000`;
-    const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
-    const params = new HttpParams();
-    const body = {};
-    /*TODO zmienić nazwę klucza*/
-    params.set('key','have-plan');
-    const options = {params};
-    return this.apiService.putData<FormInterface>(url, body, params).pipe(take(1));
+  private getQuestionsList(type: FormType): Observable<FormInterface> {
+    return this.questionsService.getQuestionsList('after');
   }
 
 }
