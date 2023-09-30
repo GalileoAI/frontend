@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Tile {
   title: string;
@@ -14,6 +15,12 @@ interface Tile {
   styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent {
+  router = inject(Router);
+
+  goToClick(url: string) {
+    this.router.navigate(['/' + url]);
+  }
+
   tiles: Tile[] = [
     {
       title: 'Mam na siebie plan',
