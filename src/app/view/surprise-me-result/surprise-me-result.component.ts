@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {PositionClass} from "../../model/classes";
 
 @Component({
   selector: 'app-surprise-me-result',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./surprise-me-result.component.scss']
 })
 export class SurpriseMeResultComponent {
+
+  @Input()
+  positionsList: PositionClass[] = [];
 
 }
