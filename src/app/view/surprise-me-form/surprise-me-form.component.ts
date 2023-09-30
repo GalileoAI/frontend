@@ -40,7 +40,7 @@ export class SurpriseMeFormComponent implements OnInit{
 
     this.postAnswers().subscribe({
       next: (val) => {
-        console.log('surprise me', val)
+        console.log('surprise me! post', val)
       }
     });
 

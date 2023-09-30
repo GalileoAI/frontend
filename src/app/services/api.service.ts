@@ -10,6 +10,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getData<T>(url: string, options: object = {}): Observable<T> {
+    console.log('get', url, options);
     return this.http.get<T>(url, options);
   }
 

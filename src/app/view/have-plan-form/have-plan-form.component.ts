@@ -39,7 +39,7 @@ export class HavePlanFormComponent implements OnInit{
 
     this.postAnswers().subscribe({
       next: (val) => {
-        console.log('I have a plan!', val)
+        console.log('I have a plan! post', val)
       }
     });
   }
