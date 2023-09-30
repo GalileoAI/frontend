@@ -1,7 +1,7 @@
 {
   "name": "hackaton",
   "version": "1.0.0",
-  "description": "GalileoAI",
+  "description": "frontend",
   "main": "tailwind.config.js",
   "dependencies": {
     "autoprefixer": "^10.4.16",
