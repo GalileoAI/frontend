@@ -6,8 +6,10 @@
           <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" [for]="question.id">
             {{question.question_str}}
           </label>
-          <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3"
-                 [class.border-gray]=""
+          <input class="w-full bg-gray-200 text-black border rounded py-3 px-4 mb-3"
+                 [class.border-gray-200]="form.get(question.id)?.untouched"
+                 [class.border-red]="form.get(question.id)?.touched && form.get(question.id)?.invalid"
+                 [class.border-green]="form.get(question.id)?.touched && form.get(question.id)?.valid"
                  required
                  [id]="question.id"
                  [name]="question.id"
