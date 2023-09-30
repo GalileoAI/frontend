@@ -17,9 +17,9 @@ export class QuestionsService {
   public getQuestionsList(type: FormType): Observable<FormInterface> {
     const url = QuestionsService.QUESTIONS_GET_API_URL;
     const headers = new HttpHeaders();
-    headers.set('Content-Type', 'application/json');
+    /*headers.set('Content-Type', 'application/json');*/
     const params = new HttpParams();
-    params.set('type', type);
+    /*params.set('type', type);*/
     const options = {params};
     return this.apiService.getData<FormInterface>(url, params).pipe(take(1));
   }
