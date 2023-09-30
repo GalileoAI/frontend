@@ -9,8 +9,8 @@ import {ApiService} from "./api.service";
   providedIn: 'root'
 })
 export class QuestionsService {
-  public static readonly QUESTIONS_GET_API_URL = ' http://127.0.0.1:8000/app/get';
-  public static readonly QUESTIONS_POST_API_URL = ' http://127.0.0.1:8000/app/post';
+  public static readonly QUESTIONS_GET_API_URL = 'https://b38f-213-25-77-242.ngrok-free.app/app/get';
+  public static readonly QUESTIONS_POST_API_URL = 'https://b38f-213-25-77-242.ngrok-free.app/app/post';
 
   constructor(private apiService: ApiService) { }
 
