@@ -5,10 +5,10 @@
     </div>
     <a
       href="https://edukacja.gov.pl/"
-      class="text-3xl font-extrabold text-zinc-900"
+      class="text-3xl font-bold text-zinc-900 hover:underline"
       >edukacja.gov.pl</a
     >
-    <div class="w-1 bg-zinc-900 h-3/5"></div>
+    <div class="w-1 bg-zinc-900 h-3/6"></div>
     <p>Portal edukacji i nauki</p>
   </section>
   <section class="relative h-[calc(100vh-5rem)]">
@@ -21,30 +21,39 @@
       <div class="flex items-center justify-center h-full">
         <div class="flex flex-col justify-center gap-6 ml-6">
           <h1 class="font-bold text-zinc-900 text-9xl">Galileo AI</h1>
-          <p class="ml-2 text-3xl font-normal text-zinc-700">
+          <p class="ml-2 text-3xl font-medium text-zinc-700">
             Znajdź z nami swoją drogę...
           </p>
         </div>
       </div>
     </div>
   </section>
-  <section class="bg-[#F3F6FD] flex flex-col justify-center">
-    <h2 class="my-24 text-5xl font-black text-center text-zinc-900">
-      Jak mozemy Ci pomóc?
+  <section class="bg-[#461EA4] flex flex-col justify-center">
+    <h2 class="my-24 text-5xl font-black text-center text-[#F3F6FD]">
+      Jak możemy Ci pomóc?
     </h2>
-    <div class="flex items-center gap-6 mx-auto mb-24">
+    <div class="flex items-center gap-10 mx-auto mb-24">
       <div *ngFor="let tile of tiles">
-        <div class="flex justify-center">
+        <div class="flex flex-col justify-center">
           <div
-            class="w-[30em] h-[44em] bg-[#20063B] hover:bg-[#2E0A51] rounded-3xl flex flex-col items-center justify-between"
+            class="w-[34em] h-[44em] border-2 border-[#20063B] hover:border-[#2E0A51] bg-[#F3F6FD] rounded-3xl flex flex-col items-center justify-between md:flex-col"
           >
-            <h3 class="my-8 text-4xl font-black text-zinc-100">
+            <h3 class="mt-10 text-4xl font-black text-zinc-900">
               {{ tile.title }}
             </h3>
+
+            <div class="px-20 mt-6">
+              <img
+                src="{{ tile.icon }}"
+                alt=""
+                class="object-cover rounded-lg aspect-square"
+              />
+            </div>
             <button
-              class="w-4/6 py-3 my-8 text-2xl font-bold rounded-xl bg-zinc-200 text-zinc-900 hover:bg-zinc-50"
+              (click)="goToClick(tile.link)"
+              class="w-4/6 py-3 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
             >
-              Rozpocznij
+              {{ tile.button }}
             </button>
           </div>
         </div>

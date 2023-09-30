@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Tile {
   title: string;
   subtitle: string;
   icon: string;
   link: string;
+  button: string;
 }
 
 @Component({
@@ -13,18 +15,26 @@ interface Tile {
   styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent {
+  router = inject(Router);
+
+  goToClick(url: string) {
+    this.router.navigate(['/' + url]);
+  }
+
   tiles: Tile[] = [
     {
-      title: 'Mam plan',
+      title: 'Mam na siebie plan',
       subtitle: 'Wybierz plan treningowy',
-      icon: 'directions_run',
+      icon: '/assets/tile2.png',
       link: '/mam-plan',
+      button: 'Działajmy',
     },
     {
-      title: 'Zaskocz mnie',
+      title: 'Szukam ścieki zawodowej',
       subtitle: 'Zobacz losowy plan treningowy',
-      icon: 'casino',
+      icon: '/assets/tile1.png',
       link: '/zaskocz-mnie',
+      button: 'Zaskocz mnie',
     },
   ];
 }
