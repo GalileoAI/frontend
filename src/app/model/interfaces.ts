@@ -26,3 +26,8 @@ export interface SchoolInterface {
   name: string;
   description: string;
 }
+
+export interface ResponseInterface {
+  header: string;
+  positions: PositionInterface[];
+}
