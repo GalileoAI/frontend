@@ -26,13 +26,12 @@ export class QuestionsService {
     return this.apiService.postData<FormInterface>(url, body, options).pipe(take(1));
   }
 
-  public postAnswers(): Observable<ResponseInterface> {
+  public postAnswers(body: object): Observable<ResponseInterface> {
     const url = QuestionsService.QUESTIONS_POST_API_URL;
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
     const params = new HttpParams();
     const options = {params};
-    const body = {};
     return this.apiService.postData<ResponseInterface>(url, body, options).pipe(take(1));
   }
 }

@@ -49,7 +49,7 @@ export class HavePlanFormComponent implements OnInit{
   }
 
   private postAnswers(): Observable<ResponseInterface> {
-    return this.questionsService.postAnswers();
+    return this.questionsService.postAnswers({});
   }
 
   send()
