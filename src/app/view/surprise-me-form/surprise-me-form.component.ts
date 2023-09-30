@@ -44,7 +44,7 @@ export class SurpriseMeFormComponent implements OnInit{
     )
     this.getQuestionsList().subscribe({
       next: (data) => {
-
+        console.log('data', data);
         /*this.questionsList =
           data.questions.map((el) =>
             new QuestionClass(el.id, el.question_str, el.answer_str));*/
