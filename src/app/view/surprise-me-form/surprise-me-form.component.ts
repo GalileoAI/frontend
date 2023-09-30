@@ -11,7 +11,7 @@ export class SurpriseMeFormComponent{
 
   /*TODO poprawić typ danych*/
   @Output()
-  sendRequestEmitter = new EventEmitter<object>();
+  sendRequestEmitter = new EventEmitter<QuestionClass[]>();
 
   @Input()
   formList: FormGroup = new FormGroup({});
@@ -24,7 +24,14 @@ export class SurpriseMeFormComponent{
 
   send()
   {
-    this.sendRequestEmitter.emit(this.formList.value);
+    const rnp = Object.entries(this.formList.value).map(
+      ([key, value]) => {
+        const tmp = this.questionsList.find((q) => q.id === key)!;
+        tmp.answer_str = value as string;
+        return tmp;
+      }
+    )
+    this.sendRequestEmitter.emit(rnp);
   }
 
 }

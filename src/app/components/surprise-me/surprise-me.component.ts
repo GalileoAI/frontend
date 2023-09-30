@@ -39,7 +39,7 @@ export class SurpriseMeComponent implements OnInit{
     ]
   } as FormInterface
   tempResponse = {
-    header: 'answers',
+    header: 'recommendation',
     positions: [
       {
         position: "test1",
@@ -113,7 +113,7 @@ export class SurpriseMeComponent implements OnInit{
     });
   }
 
-  getData(e: object)
+  getData(e: QuestionClass[])
   {
     this.hasResults = true;
     this.postAnswers(e).subscribe({
@@ -134,11 +134,15 @@ export class SurpriseMeComponent implements OnInit{
     return this.questionsService.getQuestionsList(this.type);
   }
 
-  private postAnswers(data: object): Observable<ResponseInterface> {
+  private postAnswers(data: QuestionClass[]): Observable<ResponseInterface> {
+    console.log('data', data);
+    const tmp = data.map((el) => {
+      console.log('el', el)
+    });
     const body = {
-      type: this.type,
-      ...data
-    };
+      header: this.type,
+      questions: data
+    } as FormInterface;
     return this.questionsService.postAnswers(body);
   }
 
