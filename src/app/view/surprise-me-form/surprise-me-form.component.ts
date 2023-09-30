@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {QuestionClass} from "../../model/classes";
 import {QuestionsService} from "../../services/questions.service";
 import {FormType} from "../../model/types";
@@ -13,14 +13,29 @@ import {FormInterface} from "../../model/interfaces";
 export class SurpriseMeFormComponent implements OnInit{
   questionsList: QuestionClass[] = [];
 
+  @Output()
+  sendRequestEmitter = new EventEmitter<boolean>();
+
   constructor(private questionsService: QuestionsService) {
   }
 
   ngOnInit() {
     this.getQuestionsList('after').subscribe({
       next: (data) => {
-        this.questionsList =
+        const tmp = {
+          questions: [
+            {
+              id: '1',
+              question_str: 'Label1',
+              answer_str: ''
+            }
+          ]
+        }
+        /*this.questionsList =
           data.questions.map((el) =>
+            new QuestionClass(el.id, el.question_str, el.answer_str));*/
+        this.questionsList =
+          tmp.questions.map((el) =>
             new QuestionClass(el.id, el.question_str, el.answer_str));
       }
     });
@@ -28,6 +43,11 @@ export class SurpriseMeFormComponent implements OnInit{
 
   private getQuestionsList(type: FormType): Observable<FormInterface> {
     return this.questionsService.getQuestionsList('after');
+  }
+
+  send()
+  {
+    this.sendRequestEmitter.emit(true);
   }
 
 }
