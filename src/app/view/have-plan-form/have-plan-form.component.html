@@ -1,38 +1,60 @@
 <div class="py-10">
   <form [formGroup]="form" (ngSubmit)="send()">
-    <div class="flex flex-col">
-      <div class="md:flex mb-6" *ngFor="let question of questionsList">
-        <div class="md:w-full px-3">
-          <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" [for]="question.id">
-            {{question.question_str}}*
-          </label>
-          <input class="w-full bg-gray-200 text-black border-2 rounded py-3 px-4 mb-3"
-                 [class.border-gray-200]="form.get(question.id)?.untouched"
-                 [class.border-rose-500]="form.get(question.id)?.touched && form.get(question.id)?.invalid"
-                 [class.border-green-500]="form.get(question.id)?.touched && form.get(question.id)?.valid"
-                 required
-                 [id]="question.id"
-                 [name]="question.id"
-                 [formControlName]="question.id"
-                 type="text" placeholder="Wpisz odpowiedź">
-          <ng-container *ngIf="form.get(question.id)?.touched && form.get(question.id)?.invalid">
-            <p *ngIf="form.get(question.id)?.hasError('required')" class="text-red-600 italic text-sm">
-              To pole jest wymagane
-            </p>
-          </ng-container>
-        </div>
-      </div>
-      <div class="-mx-3 md:flex mt-2 justify-center">
-        <div class="md:w-1/2 px-3">
-          <button class="md:w-full disabled:bg-gray-400 bg-violet-900 disabled:hover:border-0
-          text-white font-bold py-2 px-4 border-b-4 hover:border-b-2
-          hover:bg-violet-500 disabled:hover:bg-gray-400
-          active:hover:border-gray-100 rounded-full" type="submit" [disabled]="form.invalid">
-            Wyślij
-          </button>
+    <div class="flex gap-6 overflow-x-auto">
+      <div *ngFor="let question of questionsList; let i = index">
+        <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex() !== i }">
+          <div
+            class="w-[34em] h-[44em] border-2 border-[#20063B] hover:border-[#2E0A51] bg-[#F3F6FD] rounded-3xl flex flex-col items-center justify-between md:flex-col"
+          >
+            <label
+              class="p-5 text-3xl font-black tracking-wide text-black"
+              [for]="question.id"
+            >
+              {{ question.question_str }}*
+            </label>
+            <textarea
+              class="mb-5 text-black bg-gray-200 border-2 rounded h-[15em] text-2xl font-bold ml-1 w-[21em] p-2"
+              [class.border-gray-200]="form.get(question.id)?.untouched"
+              [class.border-rose-500]="
+                form.get(question.id)?.touched && form.get(question.id)?.invalid
+              "
+              [class.border-green-500]="
+                form.get(question.id)?.touched && form.get(question.id)?.valid
+              "
+              required
+              [id]="question.id"
+              [name]="question.id"
+              [formControlName]="question.id"
+              type="text"
+              placeholder="Wpisz odpowiedź"
+            ></textarea>
+            <ng-container
+              *ngIf="
+                form.get(question.id)?.touched && form.get(question.id)?.invalid
+              "
+            >
+              <p
+                *ngIf="form.get(question.id)?.hasError('required')"
+                class="text-sm italic text-red-600"
+              >
+                To pole jest wymagane
+              </p>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
+    <div class="justify-center mt-2 -mx-3 md:flex">
+      <div class="px-3">
+        <button
+          class="py-3 px-32 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Wyślij
+        </button>
+      </div>
+    </div>
   </form>
-  {{form.value | json}}
+  {{ form.value | json }}
 </div>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, signal} from '@angular/core';
 import {Observable, take} from "rxjs";
 import {FormInterface, QuestionInterface, ResponseInterface} from "../../model/interfaces";
 import {QuestionClass} from "../../model/classes";
@@ -12,11 +12,31 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./have-plan-form.component.scss']
 })
 export class HavePlanFormComponent implements OnInit{
-  questionsList: QuestionClass[] = [];
+  questionsList: QuestionClass[] = [
+    {
+      answer_str: 'asdasdasd',
+      id: '1',
+      question_str: 'Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?',
+    },
+    {
+      answer_str: 'asdasdasd',
+      id: '1',
+      question_str: 'Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?',
+    },
+    {
+      answer_str: 'asdasdasd',
+      id: '2',
+      question_str: 'Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?',
+    },
+    
+
+  ];
   @Output()
   sendRequestEmitter = new EventEmitter<boolean>();
 
   form = new FormGroup({});
+
+  activeQuestionIndex = signal(1);
 
   constructor(private questionsService: QuestionsService, private fb: FormBuilder) {
   }
