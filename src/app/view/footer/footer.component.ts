@@ -9,8 +9,4 @@ import {Router} from "@angular/router";
 export class FooterComponent {
   constructor(private router: Router) {
   }
-  changePage(url: string = '')
-  {
-    this.router.navigate([`/${url}`]);
-  }
 }

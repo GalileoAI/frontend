@@ -5,20 +5,17 @@
         <h5 class="text-xl font-bold mb-6">Menu</h5>
         <ul class="list-none footer-links">
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-            (click)="changePage()">
+            <a [routerLink]="['/']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Strona główna
             </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-               (click)="changePage('mam-plan')">
+            <a [routerLink]="['/', 'mam-plan']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Mam plan
             </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-               (click)="changePage('zaskocz-mnie')">
+            <a [routerLink]="['/', 'zaskocz-mnie']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Szukam swojej ścieżki
             </a>
           </li>
@@ -28,20 +25,17 @@
         <h5 class="text-xl font-bold mb-6">Zasoby</h5>
         <ul class="list-none footer-links">
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-               (click)="changePage('deklaracja-dostepnosci')">
+            <a [routerLink]="['/', 'deklaracja-dostepnosci']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Deklaracja dostępności
             </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-               (click)="changePage('polityka-prywatnosci')">
+            <a [routerLink]="['/', 'polityka-prywatnosci']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Polityka prywatności i polityka cookies
             </a>
           </li>
           <li class="mb-2">
-            <a href="#" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800"
-               (click)="changePage('warunki-korzystania')">
+            <a [routerLink]="['/', 'warunki-korzystania']" class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">
               Warunki korzystania
             </a>
           </li>
