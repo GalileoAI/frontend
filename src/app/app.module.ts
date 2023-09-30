@@ -11,6 +11,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faFacebook, faLinkedin, faStackOverflow, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {CommonModule} from "@angular/common";
   imports: [
     BrowserModule,
     CommonModule,
+    FontAwesomeModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -33,4 +36,12 @@ import {CommonModule} from "@angular/common";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {constructor(library: FaIconLibrary) {
+  library.addIcons(
+    faStackOverflow,
+    faFacebook,
+    faTwitter,
+    faLinkedin,
+    faYoutube
+  );
+} }
