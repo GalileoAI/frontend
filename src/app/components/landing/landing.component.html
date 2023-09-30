@@ -28,23 +28,30 @@
       </div>
     </div>
   </section>
-  <section class="h-screen">
-    <div class="flex items-center justify-center h-full">
-      <div class="flex items-center justify-center gap-6">
-        <button
-          class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700"
-        >
-          Mam na siebie pomysł
-        </button>
-        <button
-          class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-        >
-          Pomóz mi znaleźć moją drogę
-        </button>
+  <section class="bg-[#F3F6FD] flex flex-col justify-center">
+    <h2 class="my-24 text-5xl font-black text-center text-zinc-900">
+      Jak mozemy Ci pomóc?
+    </h2>
+    <div class="flex items-center gap-6 mx-auto mb-24">
+      <div *ngFor="let tile of tiles">
+        <div class="flex justify-center">
+          <div
+            class="w-[30em] h-[44em] bg-[#20063B] hover:bg-[#2E0A51] rounded-3xl flex flex-col items-center justify-between"
+          >
+            <h3 class="my-8 text-4xl font-black text-zinc-100">
+              {{ tile.title }}
+            </h3>
+            <button
+              class="w-4/6 py-3 my-8 text-2xl font-bold rounded-xl bg-zinc-200 text-zinc-900 hover:bg-zinc-50"
+            >
+              Rozpocznij
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section class="flex items-center justify-center h-10 bg-violet-950">
+  <section class="flex items-center justify-center h-10 bg-[#20063B]">
     <p class="font-bold text-zinc-100">Galileo AI &copy; 2023</p>
   </section>
 </main>
