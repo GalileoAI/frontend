@@ -12,6 +12,8 @@ export class ResultComponent implements OnInit, OnDestroy{
   @Input()
   positionsList: PositionClass[] = [];
   ColumnMode = ColumnMode;
+  @Input()
+  loading = true;
 
   destroy$ = new Subject();
 
@@ -19,7 +21,6 @@ export class ResultComponent implements OnInit, OnDestroy{
   table: DatatableComponent = {} as DatatableComponent;
 
   constructor() {
-
   }
 
   ngOnInit() {

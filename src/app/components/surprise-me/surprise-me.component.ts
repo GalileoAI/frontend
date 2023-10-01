@@ -17,6 +17,7 @@ export class SurpriseMeComponent implements OnInit{
   questionsList: QuestionClass[] = [];
   hasResults = false;
   positionsList: PositionClass[] = [];
+  loading = true;
 
   tempQuestions = {
     header: 'questionare',
@@ -164,6 +165,9 @@ export class SurpriseMeComponent implements OnInit{
         {
           this.positionsList = this.tempResponse.positions.map((el) => new PositionClass(el.position, el.schools));
         }
+      },
+      complete: () => {
+        this.loading = false;
       }
     })
   }
@@ -173,10 +177,6 @@ export class SurpriseMeComponent implements OnInit{
   }
 
   private postAnswers(data: QuestionClass[]): Observable<ResponseInterface> {
-    console.log('data', data);
-    const tmp = data.map((el) => {
-      console.log('el', el)
-    });
     const body = {
       header: 'questionare',
       questions: data
