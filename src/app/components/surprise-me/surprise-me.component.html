@@ -6,24 +6,30 @@
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
     <ng-template #form>
-      <button
-        (click)="prevQuestion()"
-        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-      >
-        <
-      </button>
+      <div class="relative -top-20 flex items-center justify-center w-16 h-16">
+        <button
+          *ngIf="activeQuestionIndex() > 0"
+          (click)="prevQuestion()"
+          class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
+        >
+          <
+        </button>
+      </div>
       <div class="w-[800px]">
         <app-form
           [activeQuestionIndex]="activeQuestionIndex()"
           [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
         ></app-form>
       </div>
-      <button
-        (click)="nextQuestion()"
-        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-      >
+      <div class="relative -top-20 flex items-center justify-center w-16 h-16">
+        <button
+          (click)="nextQuestion()"
+          *ngIf="activeQuestionIndex() < questionsList.length"
+          class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
         >
-      </button>
+          >
+        </button>
+      </div>
     </ng-template>
     <ng-template #results>
       <div class="max-w-5xl md:mx-auto w-full">
