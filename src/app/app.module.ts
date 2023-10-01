@@ -23,6 +23,7 @@ import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TitleComponent} from "./view/title/title.component";
 import {TagifyModule} from "ngx-tagify";
+import { SafeUrlPipe } from './safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {TagifyModule} from "ngx-tagify";
     DeklaracjaDostepnosciComponent,
     PolitykaPrywatnosciComponent,
     WarunkiKorzystaniaComponent,
-    TitleComponent
+    TitleComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

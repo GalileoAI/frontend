@@ -59,7 +59,7 @@
               let-group="group"
               let-rowHeight="rowHeight"
             >
-              <a [href]="value" class="hover:text-purple-600 text-purple-800 flex justify-between">
+              <a [href]="value | safeUrl" target="_blank" class="hover:text-purple-600 text-purple-800 flex justify-between">
                 <span style="word-break: break-all">{{value}}</span><fa-icon [icon]="['fas', 'arrow-right']" class="mr-4"></fa-icon>
               </a>
             </ng-template>
