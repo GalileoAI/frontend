@@ -10,15 +10,13 @@ import {
 } from "../../model/classes";
 import {
   ElementsListInterface,
-  FormInterface,
-  ResponseInterface,
   SearchListInterface,
   TERCListInterface
 } from "../../model/interfaces";
-import {QuestionsService} from "../../services/questions.service";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Component, OnInit, signal} from '@angular/core';
 import {SearchService} from "../../services/search.service";
+import {TagData, TagifySettings} from "ngx-tagify";
 
 @Component({
   selector: 'app-have-plan',
@@ -26,9 +24,25 @@ import {SearchService} from "../../services/search.service";
   styleUrls: ['./have-plan.component.scss'],
 })
 export class HavePlanComponent implements OnInit{
-  readonly type: FormType = 'after';
-  formQuestions = new FormGroup({
-    hobbies: new FormControl()
+  tags: TagData[] = [
+    {
+      value: 'administracja',
+    },
+    {
+      value: 'chemia',
+    },
+    {
+      value: 'biologia',
+    },
+    {
+      value: 'automatyka',
+    },
+    {
+      value: 'ekonomia',
+    }
+  ];
+  formGroup = new FormGroup({
+    hobbies: new FormControl(this.tags)
   });
   resultsList: UniversityClass[] = [];
   coursesList: ElementClass[] = [];
@@ -40,28 +54,6 @@ export class HavePlanComponent implements OnInit{
   citiesList: ElementClass[] = [];
   hasResults = false;
   positionsList: PositionClass[] = [];
-  hobbiesList = new ElementsListClass([
-    {
-      name: 'administracja',
-      id: ''
-    },
-    {
-      name: 'chemia',
-      id: ''
-    },
-    {
-      name: 'biologia',
-      id: ''
-    },
-    {
-      name: 'automatyka',
-      id: ''
-    },
-    {
-      name: 'ekonomia',
-      id: ''
-    }
-  ]);
 
   constructor(private searchService: SearchService, private fb: FormBuilder) {
   }
@@ -158,17 +150,29 @@ export class HavePlanComponent implements OnInit{
     return this.questionsService.postAnswers(body);
   }*/
 
-  activeQuestionIndex = signal(0);
 
-  prevQuestion() {
-    if (this.activeQuestionIndex() === 0) {
-      return;
+  settings: TagifySettings = {
+    placeholder: 'Start typing...',
+    blacklist: ['fucking', 'shit'],
+    callbacks: {
+      click: (e) => { console.log(e.detail); }
     }
+  };
 
-    this.activeQuestionIndex.set(this.activeQuestionIndex() - 1);
+  whitelist$ = new BehaviorSubject<string[]>(['hello', 'world']);
+
+  readonly = false;
+
+  onAdd(tagify: any) {
+    console.log('added a tag', tagify);
   }
 
-  nextQuestion() {
-    this.activeQuestionIndex.set(this.activeQuestionIndex() + 1);
+  onRemove(tags: any) {
+    console.log('removed a tag', tags);
   }
+
+  getInput(event: string){
+
+  }
+
 }
