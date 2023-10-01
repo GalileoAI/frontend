@@ -6,11 +6,6 @@ export interface FormInterface {
   questions: QuestionInterface[]
 }
 
-// odbierz wynik po wysłaniu wypełnionego formularza
-export interface ResponseInterface {
-
-}
-
 export interface QuestionInterface {
   id: string,
   question_str: string;

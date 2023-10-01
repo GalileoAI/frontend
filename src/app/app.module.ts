@@ -22,6 +22,7 @@ import { DeklaracjaDostepnosciComponent } from './components/deklaracja-dostepno
 import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/polityka-prywatnosci.component';
 import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,13 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDatatableModule.forRoot({
+      messages: {
+        emptyMessage: 'No data to display', // Message to show when array is presented, but contains no values
+        totalMessage: 'total', // Footer total message
+        selectedMessage: 'selected' // Footer selected message
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
