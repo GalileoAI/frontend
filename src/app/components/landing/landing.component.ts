@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 interface Tile {
   title: string;
-  subtitle: string;
   icon: string;
   link: string;
   button: string;
@@ -24,14 +23,12 @@ export class LandingComponent {
   tiles: Tile[] = [
     {
       title: 'Mam na siebie plan',
-      subtitle: 'Wybierz plan treningowy',
       icon: '/assets/tile2.png',
       link: '/mam-plan',
-      button: 'Działajmy',
+      button: 'Do dzieła',
     },
     {
-      title: 'Szukam ścieki zawodowej',
-      subtitle: 'Zobacz losowy plan treningowy',
+      title: 'Szukam ścieżki zawodowej',
       icon: '/assets/tile1.png',
       link: '/zaskocz-mnie',
       button: 'Zaskocz mnie',

@@ -1,6 +1,6 @@
 <div class="py-10">
   <form [formGroup]="formList" (ngSubmit)="send()">
-    <div class="flex overflow-x-scroll" #scrollable>
+    <div class="flex pb-10 overflow-x-scroll" #scrollable>
       <div *ngFor="let question of questionsList; let i = index">
         <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex !== i }">
           <div
@@ -48,7 +48,7 @@
     <div class="justify-center mt-2 -mx-3 md:flex">
       <div class="px-3">
         <button
-          class="py-3 px-32 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
+          class="py-5 px-32 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
           type="submit"
           [disabled]="formList.invalid"
         >
@@ -57,5 +57,4 @@
       </div>
     </div>
   </form>
-  {{ formList.value | json }}
 </div>

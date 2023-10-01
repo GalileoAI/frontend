@@ -1,56 +1,63 @@
-<h3 class="mx-4 text-xl font-bold">Wyniki</h3>
-<div class="px-4 mt-10">
-  <div class="flex flex-col">
-    <ng-container *ngFor="let p of positionsList">
-      <div class="mb-6">
-        <h4 class="font-bold mb-3">Zawód: {{p.position}}</h4>
-        <ngx-datatable
-          #table
-          class="material"
-          [rows]="p.schools"
-          [columnMode]="ColumnMode.force"
-          [limit]="4"
-          rowHeight="auto">
-          <!-- Group Header Template -->
-          <ngx-datatable-column name="Szkoła" prop="name">
-            <ng-template
-              ngx-datatable-cell-template
-              let-rowIndex="rowIndex"
-              let-value="value"
-              let-row="row"
-              let-group="group"
-              let-rowHeight="rowHeight"
-            >
-              {{value}}
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Kierunek" prop="description.faculty">
-            <ng-template
-              ngx-datatable-cell-template
-              let-rowIndex="rowIndex"
-              let-value="value"
-              let-row="row"
-              let-group="group"
-              let-rowHeight="rowHeight"
-            >
-              {{value}}
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Strona WWW" prop="description.website">
-            <ng-template
-              ngx-datatable-cell-template
-              let-rowIndex="rowIndex"
-              let-value="value"
-              let-row="row"
-              let-group="group"
-              let-rowHeight="rowHeight"
-            >
-              {{value}}
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
-      </div>
-    </ng-container>
-
+<div class="py-5 ml-32">
+  <h3 class="text-xl font-bold text-zinc-50">
+    Na podstawie Twoich odpowiedzi, uważamy, że powinieneś rozważyć następujące
+    kierunki:
+  </h3>
+  <div class="mt-10">
+    <div class="flex flex-col">
+      <ng-container *ngFor="let p of positionsList">
+        <div class="mb-6">
+          <h4 class="mb-3 text-3xl font-black text-zinc-50">
+            {{ p.position }}
+          </h4>
+          <ngx-datatable
+            #table
+            class="w-[100%] material"
+            [rows]="p.schools"
+            [columnMode]="ColumnMode.force"
+            [limit]="4"
+            rowHeight="auto"
+          >
+            <!-- Group Header Template -->
+            <ngx-datatable-column name="Szkoła" prop="name">
+              <ng-template
+                ngx-datatable-cell-template
+                let-rowIndex="rowIndex"
+                let-value="value"
+                let-row="row"
+                let-group="group"
+                let-rowHeight="rowHeight"
+              >
+                {{ value }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Kierunek" prop="description.faculty">
+              <ng-template
+                ngx-datatable-cell-template
+                let-rowIndex="rowIndex"
+                let-value="value"
+                let-row="row"
+                let-group="group"
+                let-rowHeight="rowHeight"
+              >
+                {{ value }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Strona WWW" prop="description.website">
+              <ng-template
+                ngx-datatable-cell-template
+                let-rowIndex="rowIndex"
+                let-value="value"
+                let-row="row"
+                let-group="group"
+                let-rowHeight="rowHeight"
+              >
+                {{ value }}
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>

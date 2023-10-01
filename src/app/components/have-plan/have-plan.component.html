@@ -3,12 +3,10 @@
 <main class="bg-[#461EA4]">
   <h1
     class="max-w-5xl mx-3 md:mx-auto text-4xl pt-10 font-black text-[#F3F6FD]"
-  >
-    Mam plan
-  </h1>
+  >{{hasResults ? 'Mamy to!' : 'Mam na siebie plan'}}</h1>
 
   <section
-    class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
+    class="flex items-center justify-between gap-6 mx-3 my-10 max-w-7xl md:mx-auto"
   >
     <button
       *ngIf="!hasResults"
@@ -21,9 +19,14 @@
       <app-form
         [activeQuestionIndex]="activeQuestionIndex()"
         *ngIf="!hasResults"
-        [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
+        [formList]="formQuestions"
+        [questionsList]="questionsList"
+        (sendRequestEmitter)="getData($event)"
       ></app-form>
-      <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
+      <app-result
+        *ngIf="hasResults"
+        [positionsList]="positionsList"
+      ></app-result>
     </div>
     <button
       *ngIf="!hasResults"

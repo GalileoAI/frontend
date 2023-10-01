@@ -20,9 +20,14 @@
       <app-form
         [activeQuestionIndex]="activeQuestionIndex()"
         *ngIf="!hasResults"
-        [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
+        [formList]="formQuestions"
+        [questionsList]="questionsList"
+        (sendRequestEmitter)="getData($event)"
       ></app-form>
-      <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
+      <app-result
+        *ngIf="hasResults"
+        [positionsList]="positionsList"
+      ></app-result>
     </div>
     <button
       *ngIf="!hasResults"
