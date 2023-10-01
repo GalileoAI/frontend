@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
 import {FormType} from "../../model/types";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PositionClass, QuestionClass} from "../../model/classes";
 import {FormInterface, ResponseInterface} from "../../model/interfaces";
 import {QuestionsService} from "../../services/questions.service";
 import {Observable} from "rxjs";
+import {Component, OnInit, signal} from '@angular/core';
 
 @Component({
   selector: 'app-have-plan',
@@ -182,5 +182,19 @@ export class HavePlanComponent implements OnInit{
       questions: data
     } as FormInterface;
     return this.questionsService.postAnswers(body);
+  }
+
+  activeQuestionIndex = signal(0);
+
+  prevQuestion() {
+    if (this.activeQuestionIndex() === 0) {
+      return;
+    }
+
+    this.activeQuestionIndex.set(this.activeQuestionIndex() - 1);
+  }
+
+  nextQuestion() {
+    this.activeQuestionIndex.set(this.activeQuestionIndex() + 1);
   }
 }

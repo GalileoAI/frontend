@@ -1,14 +1,37 @@
-import {Component, EventEmitter, Input, Output, signal} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {QuestionClass} from "../../model/classes";
-import {FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {QuestionsService} from "../../services/questions.service";
+import {ViewportScroller} from "@angular/common";
 
 @Component({
   selector: 'app-have-plan-form',
   templateUrl: './have-plan-form.component.html',
-  styleUrls: ['./have-plan-form.component.scss']
+  styleUrls: ['./have-plan-form.component.scss'],
 })
-export class HavePlanFormComponent{
-  activeQuestionIndex = signal(1);
+export class HavePlanFormComponent implements OnChanges {
+  @Input() activeQuestionIndex = 0;
+
+  @ViewChild('scrollable', { read: ElementRef })
+  public scrollable?: ElementRef<any>;
+
+  form = new FormGroup({});
+
+  constructor(
+    private questionsService: QuestionsService,
+    private fb: FormBuilder,
+    private scroller: ViewportScroller
+  ) {}
+
   @Output()
   sendRequestEmitter = new EventEmitter<QuestionClass[]>();
 
@@ -18,8 +41,30 @@ export class HavePlanFormComponent{
   @Input()
   questionsList: QuestionClass[] = [];
 
-  constructor() {
+  ngOnChanges(change: SimpleChanges) {
+    if (change['activeQuestionIndex']) {
+      if (
+        change['activeQuestionIndex'].currentValue >
+        change['activeQuestionIndex'].previousValue
+      ) {
+        this.scrollable?.nativeElement.scrollTo({
+          left: this.scrollable?.nativeElement.scrollLeft + 540,
+          behavior: 'smooth',
+        });
+      }
+
+      if (
+        change['activeQuestionIndex'].currentValue <
+        change['activeQuestionIndex'].previousValue
+      ) {
+        this.scrollable?.nativeElement.scrollTo({
+          left: this.scrollable?.nativeElement.scrollLeft - 540,
+          behavior: 'smooth',
+        });
+      }
+    }
   }
+
 
   send()
   {

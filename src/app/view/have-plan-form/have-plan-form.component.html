@@ -1,9 +1,10 @@
 <div class="py-10">
   <form [formGroup]="formList" (ngSubmit)="send()">
-    <div class="flex gap-6 overflow-x-auto">
+    <div class="flex overflow-x-scroll" #scrollable>
       <div *ngFor="let question of questionsList; let i = index">
-        <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex() !== i }">
+        <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex !== i }">
           <div
+            [ngClass]="{ 'ml-28': i === 0, 'mr-28': i === questionsList.length - 1}"
             class="w-[34em] h-[44em] border-2 border-[#20063B] hover:border-[#2E0A51] bg-[#F3F6FD] rounded-3xl flex flex-col items-center justify-between md:flex-col"
           >
             <label
