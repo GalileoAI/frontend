@@ -39,6 +39,7 @@
               />
             </div>
             <button
+              disabled="{{ tile.isDisabled }}"
               (click)="goToClick(tile.link)"
               class="w-4/6 py-3 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
             >
