@@ -14,7 +14,7 @@ import {
   TERCListInterface
 } from "../../model/interfaces";
 import {BehaviorSubject, Observable} from "rxjs";
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, ElementRef, OnInit, signal, ViewChild} from '@angular/core';
 import {SearchService} from "../../services/search.service";
 import {TagData, TagifySettings} from "ngx-tagify";
 
@@ -42,7 +42,8 @@ export class HavePlanComponent implements OnInit{
     }
   ];
   formGroup = new FormGroup({
-    hobbies: new FormControl(this.tags)
+    hobbies: new FormControl(this.tags),
+    universities: new FormControl(),
   });
   resultsList: UniversityClass[] = [];
   coursesList: ElementClass[] = [];
@@ -54,6 +55,7 @@ export class HavePlanComponent implements OnInit{
   citiesList: ElementClass[] = [];
   hasResults = false;
   positionsList: PositionClass[] = [];
+
 
   constructor(private searchService: SearchService, private fb: FormBuilder) {
   }
@@ -173,5 +175,6 @@ export class HavePlanComponent implements OnInit{
 
   getInput(event: string) {
   }
+  
 
 }

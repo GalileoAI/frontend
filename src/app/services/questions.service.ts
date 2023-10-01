@@ -9,7 +9,7 @@ import {ApiService} from "./api.service";
   providedIn: 'root'
 })
 export class QuestionsService {
-  public static readonly BASE_URL = 'https://qualifications-vault-rating-soul.trycloudflare.com';
+  public static readonly BASE_URL = 'https://freight-shot-cialis-proven.trycloudflare.com/';
   public static readonly QUESTIONS_GET_API_URL = `${QuestionsService.BASE_URL}/app/get`;
   public static readonly QUESTIONS_POST_API_URL =  `${QuestionsService.BASE_URL}/app/post`;
 

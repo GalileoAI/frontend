@@ -1,18 +1,33 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {PositionClass} from "../../model/classes";
 import {ColumnMode, DatatableComponent} from "@swimlane/ngx-datatable";
+import {distinctUntilChanged, flatMap, from, map, Observable, of, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss']
 })
-export class ResultComponent {
+export class ResultComponent implements OnInit, OnDestroy{
   @Input()
   positionsList: PositionClass[] = [];
   ColumnMode = ColumnMode;
 
+  destroy$ = new Subject();
+
   @ViewChild('table')
   table: DatatableComponent = {} as DatatableComponent;
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
 
 }

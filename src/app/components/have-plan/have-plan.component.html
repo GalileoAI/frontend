@@ -6,15 +6,23 @@
   >
     <ng-template #form>
       <form [formGroup]="formGroup">
-        <div class="flex">
-        <label for="hobbies">Zainteresowania:</label>
-        <tagify formControlName="hobbies" id="hobbies" inputClass="form-control"
-                [settings]="settings"
-                [whitelist]="whitelist$"
-                [readonly]="readonly"
-                (add)="onAdd($event)"
-                (tInput)="getInput($event)"
-                (remove)="onRemove($event)"></tagify>
+        <div class="flex flex-col">
+          <div class="flex flex-col">
+            <label class="text-white font-bold" for="hobbies">Zainteresowania:</label>
+            <tagify formControlName="hobbies" id="hobbies" inputClass="form-control"
+                    [settings]="settings"
+                    [whitelist]="whitelist$"
+                    [readonly]="readonly"
+                    (add)="onAdd($event)"
+                    (tInput)="getInput($event)"
+                    (remove)="onRemove($event)"></tagify>
+          </div>
+          <div class="flex flex-col">
+            <label class="text-white font-bold">Uczelnie:</label>
+            <select data-te-select-init data-te-select-filter="true" id="universities" formControlName="universities">
+              <option *ngFor="let u of universitiesList; index as i" [value]="u.id">{{u.name}}</option>
+            </select>
+          </div>
         </div>
       </form>
     </ng-template>
