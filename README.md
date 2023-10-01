@@ -8,4 +8,4 @@ This project is a concept for the Galileo AI website, a tool helping young peopl
 
 ## Demo
 
-The live demo is available at [https://galileo-ai.netlify.app](https://galileo-ai.netlify.app/).
+The live demo is available at [https://patentnaprzyszlosc.netlify.app](https://patentnaprzyszlosc.netlify.app).
