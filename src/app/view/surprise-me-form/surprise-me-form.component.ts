@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {QuestionClass} from "../../model/classes";
 import {FormGroup} from "@angular/forms";
 
@@ -9,7 +9,6 @@ import {FormGroup} from "@angular/forms";
 })
 export class SurpriseMeFormComponent{
 
-  /*TODO poprawić typ danych*/
   @Output()
   sendRequestEmitter = new EventEmitter<QuestionClass[]>();
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {PositionClass} from "../../model/classes";
 import {ColumnMode, DatatableComponent} from '@swimlane/ngx-datatable';
 
@@ -7,7 +7,7 @@ import {ColumnMode, DatatableComponent} from '@swimlane/ngx-datatable';
   templateUrl: './surprise-me-result.component.html',
   styleUrls: ['./surprise-me-result.component.scss']
 })
-export class SurpriseMeResultComponent implements OnInit{
+export class SurpriseMeResultComponent{
 
   @Input()
   positionsList: PositionClass[] = [];
@@ -15,8 +15,5 @@ export class SurpriseMeResultComponent implements OnInit{
 
   @ViewChild('table')
   table: DatatableComponent = {} as DatatableComponent;
-
-  ngOnInit() {
-  }
 
 }
