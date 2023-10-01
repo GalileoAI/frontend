@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HavePlanComponent } from './components/have-plan/have-plan.component';
-import { HavePlanFormComponent } from './view/have-plan-form/have-plan-form.component';
+import { FormComponent } from './view/form/form.component';
 import { HeaderComponent } from './view/header/header.component';
 import { FooterComponent } from './view/footer/footer.component';
-import { HavePlanResultComponent } from './view/have-plan-result/have-plan-result.component';
+import { ResultComponent } from './view/result/result.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -26,11 +26,11 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
   declarations: [
     AppComponent,
     HavePlanComponent,
-    HavePlanFormComponent,
+    FormComponent,
     LandingComponent,
     HeaderComponent,
     FooterComponent,
-    HavePlanResultComponent,
+    ResultComponent,
     SurpriseMeComponent,
     DeklaracjaDostepnosciComponent,
     PolitykaPrywatnosciComponent,

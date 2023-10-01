@@ -16,12 +16,12 @@
       <
     </button>
     <div class="w-[800px]">
-      <app-have-plan-form
+      <app-form
         [activeQuestionIndex]="activeQuestionIndex()"
         *ngIf="!hasResults"
         [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
-      ></app-have-plan-form>
-      <app-have-plan-result *ngIf="hasResults" [positionsList]="positionsList"></app-have-plan-result>
+      ></app-form>
+      <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
     </div>
     <button
       (click)="nextQuestion()"

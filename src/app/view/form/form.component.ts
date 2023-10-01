@@ -14,17 +14,15 @@ import {QuestionsService} from "../../services/questions.service";
 import {ViewportScroller} from "@angular/common";
 
 @Component({
-  selector: 'app-have-plan-form',
-  templateUrl: './have-plan-form.component.html',
-  styleUrls: ['./have-plan-form.component.scss'],
+  selector: 'app-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss'],
 })
-export class HavePlanFormComponent implements OnChanges {
+export class FormComponent implements OnChanges {
   @Input() activeQuestionIndex = 0;
 
   @ViewChild('scrollable', { read: ElementRef })
   public scrollable?: ElementRef<any>;
-
-  form = new FormGroup({});
 
   constructor(
     private questionsService: QuestionsService,

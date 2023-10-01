@@ -3,11 +3,11 @@ import {PositionClass} from "../../model/classes";
 import {ColumnMode, DatatableComponent} from "@swimlane/ngx-datatable";
 
 @Component({
-  selector: 'app-have-plan-result',
-  templateUrl: './have-plan-result.component.html',
-  styleUrls: ['./have-plan-result.component.scss']
+  selector: 'app-result',
+  templateUrl: './result.component.html',
+  styleUrls: ['./result.component.scss']
 })
-export class HavePlanResultComponent {
+export class ResultComponent {
   @Input()
   positionsList: PositionClass[] = [];
   ColumnMode = ColumnMode;
