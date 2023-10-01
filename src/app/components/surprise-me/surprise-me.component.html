@@ -1,34 +1,47 @@
 <app-header></app-header>
 <main class="bg-[#461EA4]">
-  <h1
-    class="max-w-5xl mx-3 md:mx-auto text-4xl pt-10 font-black text-[#F3F6FD]"
-  >
-    Szukam swojej ścieżki
-  </h1>
+  <div class="max-w-5xl mx-3 md:mx-auto text-4xl py-10">
+    <a [routerLink]="['/']" class="flex text-sm text-white mb-5">
+      <fa-icon [icon]="['fas', 'arrow-left']" class="mr-4"></fa-icon>
+      Powrót do strony głównej
+    </a>
+    <h1
+      class="font-black text-[#F3F6FD]"
+    >
+      Szukam swojej ścieżki
+    </h1>
+  </div>
 
   <section
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
-    <button
-      (click)="prevQuestion()"
-      class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-    >
-      <
-    </button>
-    <div class="w-[800px]">
-      <app-form
-        [activeQuestionIndex]="activeQuestionIndex()"
-        *ngIf="!hasResults"
-        [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
-      ></app-form>
-      <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
-    </div>
-    <button
-      (click)="nextQuestion()"
-      class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-    >
+    <ng-template #form>
+      <button
+        (click)="prevQuestion()"
+        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
       >
-    </button>
+        <
+      </button>
+      <div class="w-[800px]">
+        <app-form
+          [activeQuestionIndex]="activeQuestionIndex()"
+          [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
+        ></app-form>
+      </div>
+      <button
+        (click)="nextQuestion()"
+        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
+      >
+        >
+      </button>
+    </ng-template>
+    <ng-template #results>
+      <div class="max-w-5xl md:mx-auto w-full">
+        <app-result [positionsList]="positionsList"></app-result>
+      </div>
+    </ng-template>
+
+    <ng-container *ngTemplateOutlet="!hasResults ? form : results"></ng-container>
   </section>
 </main>
 <app-footer></app-footer>
