@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {Observable} from "rxjs";
 import {FormInterface, ResponseInterface} from "../../model/interfaces";
 import {QuestionsService} from "../../services/questions.service";
@@ -182,6 +182,20 @@ export class SurpriseMeComponent implements OnInit{
       questions: data
     } as FormInterface;
     return this.questionsService.postAnswers(body);
+  }
+
+  activeQuestionIndex = signal(0);
+
+  prevQuestion() {
+    if (this.activeQuestionIndex() === 0) {
+      return;
+    }
+
+    this.activeQuestionIndex.set(this.activeQuestionIndex() - 1);
+  }
+
+  nextQuestion() {
+    this.activeQuestionIndex.set(this.activeQuestionIndex() + 1);
   }
 
 }

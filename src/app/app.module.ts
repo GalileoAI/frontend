@@ -16,8 +16,6 @@ import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome
 import {faFacebook, faLinkedin, faStackOverflow, faTwitter, faYoutube} from "@fortawesome/free-brands-svg-icons";
 import {LandingComponent} from "./components/landing/landing.component";
 import { SurpriseMeComponent } from './components/surprise-me/surprise-me.component';
-import { SurpriseMeFormComponent } from './view/surprise-me-form/surprise-me-form.component';
-import { SurpriseMeResultComponent } from './view/surprise-me-result/surprise-me-result.component';
 import { DeklaracjaDostepnosciComponent } from './components/deklaracja-dostepnosci/deklaracja-dostepnosci.component';
 import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/polityka-prywatnosci.component';
 import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
@@ -34,8 +32,6 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
     FooterComponent,
     HavePlanResultComponent,
     SurpriseMeComponent,
-    SurpriseMeFormComponent,
-    SurpriseMeResultComponent,
     DeklaracjaDostepnosciComponent,
     PolitykaPrywatnosciComponent,
     WarunkiKorzystaniaComponent

@@ -1,14 +1,34 @@
 <app-header></app-header>
-<div class="py-6 md:py-12">
-  <div class="container px-4 mx-auto">
+<main class="bg-[#461EA4]">
+  <h1
+    class="max-w-5xl mx-3 md:mx-auto text-4xl pt-10 font-black text-[#F3F6FD]"
+  >
+    Szukam swojej ścieżki
+  </h1>
 
-    <div class="mx-auto">
-      <h1 class="text-3xl md:text-4xl font-medium mb-2">Szukam swojej ścieżki</h1>
+  <section
+    class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
+  >
+    <button
+      (click)="prevQuestion()"
+      class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
+    >
+      <
+    </button>
+    <div class="w-[800px]">
+      <app-have-plan-form
+        [activeQuestionIndex]="activeQuestionIndex()"
+        *ngIf="!hasResults"
+        [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
+      ></app-have-plan-form>
+      <app-have-plan-result *ngIf="hasResults" [positionsList]="positionsList"></app-have-plan-result>
     </div>
-  </div>
-</div>
-<div class="container mx-auto">
-  <app-surprise-me-form *ngIf="!hasResults" [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"></app-surprise-me-form>
-  <app-surprise-me-result *ngIf="hasResults" [positionsList]="positionsList"></app-surprise-me-result>
-</div>
+    <button
+      (click)="nextQuestion()"
+      class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
+    >
+      >
+    </button>
+  </section>
+</main>
 <app-footer></app-footer>
