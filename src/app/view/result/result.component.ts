@@ -1,7 +1,8 @@
 import {Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {PositionClass} from "../../model/classes";
 import {ColumnMode, DatatableComponent} from "@swimlane/ngx-datatable";
-import {distinctUntilChanged, flatMap, from, map, Observable, of, Subject, takeUntil} from "rxjs";
+import {Subject} from "rxjs";
+import {SafeUrlPipe} from "../../safe-url.pipe";
 
 @Component({
   selector: 'app-result',
@@ -31,4 +32,5 @@ export class ResultComponent implements OnInit, OnDestroy{
     this.destroy$.complete();
   }
 
+  protected readonly SafeUrlPipe = SafeUrlPipe;
 }
