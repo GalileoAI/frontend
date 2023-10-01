@@ -11,10 +11,11 @@
               class="p-5 text-3xl font-black tracking-wide text-black"
               [for]="question.id"
             >
-              {{ question.question_str }}*
+              {{ question.question_str }}<span class="ml-1 text-red-600">*</span>
             </label>
+            <div>
             <textarea
-              class="mb-5 text-black bg-gray-200 border-2 rounded h-[15em] text-2xl font-bold ml-1 w-[21em] p-2"
+              class="mb-2 text-black bg-gray-200 border-2 rounded h-[15em] text-2xl font-bold ml-1 w-[21em] p-2"
               [class.border-gray-200]="formList.get(question.id)?.untouched"
               [class.border-rose-500]="
                 formList.get(question.id)?.touched && formList.get(question.id)?.invalid
@@ -36,11 +37,12 @@
             >
               <p
                 *ngIf="formList.get(question.id)?.hasError('required')"
-                class="text-sm italic text-red-600"
+                class="italic font-bold text-red-600 text-md"
               >
                 To pole jest wymagane
               </p>
             </ng-container>
+          </div>
           </div>
         </div>
       </div>
