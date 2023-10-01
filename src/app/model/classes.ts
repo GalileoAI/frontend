@@ -1,8 +1,9 @@
 import {
+  CourseInterface, CoursesListInterface,
   PositionInterface,
   QuestionInterface,
   SchoolDescriptionInterface,
-  SchoolInterface
+  SchoolInterface, SearchListInterface, UniversityInterface
 } from "./interfaces";
 
 export class QuestionClass implements QuestionInterface {
@@ -40,5 +41,49 @@ export class PositionClass implements PositionInterface {
   constructor(position: string, schools: SchoolInterface[]) {
     this.position = position;
     this.schools = schools.map((el) => new SchoolClass(el.name, el.description));
+  }
+}
+
+export class UniversityClass implements UniversityInterface {
+  city: string;
+  courseOfStudy: number;
+  courses: any;
+  id: string;
+  level: string;
+  postgraduate: number;
+  type: string;
+  universityName: string;
+  constructor(id: string, level: string, postgraduate: number, type: string, universityName: string, city: string, courseOfStudy: number, courses: any) {
+    this.id = id;
+    this.level = level;
+    this.postgraduate = postgraduate;
+    this.type = type;
+    this.universityName = universityName;
+    this.city = city;
+    this.courseOfStudy = courseOfStudy;
+    this.courses = courses;
+  }
+}
+
+export class SearchListClass implements SearchListInterface {
+  list: UniversityClass[];
+  constructor(list: UniversityInterface[]) {
+    this.list = list.map((el) => new UniversityClass(el.id, el.level, el.postgraduate, el.type, el.universityName, el.city, el.courseOfStudy, el.courses))
+  }
+}
+
+export class CourseClass implements CourseInterface {
+  id: any;
+  name: string;
+  constructor(id: any, name: string) {
+    this.id = id;
+    this.name = name;
+  }
+}
+
+export class CoursesListClass implements CoursesListInterface {
+  list: CourseInterface[];
+  constructor(list: CourseInterface[]) {
+    this.list = list.map((el) => new CourseClass(el.id, el.name));
   }
 }

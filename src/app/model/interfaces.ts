@@ -31,3 +31,27 @@ export interface ResponseInterface {
   header: string;
   positions: PositionInterface[];
 }
+
+export interface UniversityInterface {
+  universityName: string;
+  id: string;
+  courseOfStudy: number;
+  postgraduate: number;
+  level: string;
+  type: string;
+  city: string;
+  courses: any;
+}
+
+export interface SearchListInterface {
+  list: UniversityInterface[];
+}
+
+export interface CourseInterface {
+  name: string;
+  id: any
+}
+
+export interface CoursesListInterface {
+  list: CourseInterface[];
+}

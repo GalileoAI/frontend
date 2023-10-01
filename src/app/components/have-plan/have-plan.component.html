@@ -12,10 +12,7 @@
         <
       </button>
       <div class="w-[800px]">
-        <app-form
-          [activeQuestionIndex]="activeQuestionIndex()"
-          [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
-        ></app-form>
+
       </div>
       <button
         (click)="nextQuestion()"

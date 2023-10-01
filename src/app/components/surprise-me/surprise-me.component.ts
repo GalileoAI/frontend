@@ -178,7 +178,7 @@ export class SurpriseMeComponent implements OnInit{
       console.log('el', el)
     });
     const body = {
-      header: this.type,
+      header: 'questionare',
       questions: data
     } as FormInterface;
     return this.questionsService.postAnswers(body);
