@@ -19,7 +19,7 @@ import { SurpriseMeComponent } from './components/surprise-me/surprise-me.compon
 import { DeklaracjaDostepnosciComponent } from './components/deklaracja-dostepnosci/deklaracja-dostepnosci.component';
 import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/polityka-prywatnosci.component';
 import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TitleComponent} from "./view/title/title.component";
 import {TagifyModule} from "ngx-tagify";
@@ -67,6 +67,7 @@ export class AppModule {constructor(library: FaIconLibrary) {
     faTwitter,
     faLinkedin,
     faYoutube,
-    faArrowLeft
+    faArrowLeft,
+    faArrowRight
   );
 } }

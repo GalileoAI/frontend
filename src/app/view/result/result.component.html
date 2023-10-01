@@ -12,7 +12,7 @@
               class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
             ></span>
       </div>
-      <p>Proszę czekać, trwa ładowanie...</p>
+      <p class="py-3">Proszę czekać, trwa ładowanie...</p>
     </ng-template>
     <ng-template #resultsTemplate>
     <ng-container *ngFor="let p of positionsList">
@@ -59,7 +59,9 @@
               let-group="group"
               let-rowHeight="rowHeight"
             >
-              <a [href]="value">{{value}}</a>
+              <a [href]="value" class="hover:text-purple-600 text-purple-800 flex justify-between">
+                <span style="word-break: break-all">{{value}}</span><fa-icon [icon]="['fas', 'arrow-right']" class="mr-4"></fa-icon>
+              </a>
             </ng-template>
           </ngx-datatable-column>
         </ngx-datatable>
