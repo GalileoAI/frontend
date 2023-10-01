@@ -5,24 +5,26 @@
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
     <ng-template #form>
-      <button
-        (click)="prevQuestion()"
-        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-      >
-        <
-      </button>
-      <div class="w-[800px]">
-        <app-form
-          [activeQuestionIndex]="activeQuestionIndex()"
-          [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
-        ></app-form>
-      </div>
-      <button
-        (click)="nextQuestion()"
-        class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
-      >
-        >
-      </button>
+      <form [formGroup]="formGroup">
+        <div class="flex flex-col">
+          <div class="flex flex-col">
+            <label class="text-white font-bold" for="hobbies">Zainteresowania:</label>
+            <tagify formControlName="hobbies" id="hobbies" inputClass="form-control"
+                    [settings]="settings"
+                    [whitelist]="whitelist$"
+                    [readonly]="readonly"
+                    (add)="onAdd($event)"
+                    (tInput)="getInput($event)"
+                    (remove)="onRemove($event)"></tagify>
+          </div>
+          <div class="flex flex-col">
+            <label class="text-white font-bold">Uczelnie:</label>
+            <select data-te-select-init data-te-select-filter="true" id="universities" formControlName="universities">
+              <option *ngFor="let u of universitiesList; index as i" [value]="u.id">{{u.name}}</option>
+            </select>
+          </div>
+        </div>
+      </form>
     </ng-template>
     <ng-template #results>
       <div class="w-full max-w-5xl md:mx-auto">
