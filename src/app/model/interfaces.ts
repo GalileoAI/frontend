@@ -17,9 +17,14 @@ export interface PositionInterface {
   schools: SchoolInterface[];
 }
 
+export interface SchoolDescriptionInterface {
+  faculty: string;
+  website: string;
+}
+
 export interface SchoolInterface {
   name: string;
-  description: string;
+  description: SchoolDescriptionInterface;
 }
 
 export interface ResponseInterface {

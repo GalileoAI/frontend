@@ -1,5 +1,5 @@
 <div class="py-10">
-  <form [formGroup]="form" (ngSubmit)="send()">
+  <form [formGroup]="formList" (ngSubmit)="send()">
     <div class="flex overflow-x-scroll" #scrollable>
       <div *ngFor="let question of questionsList; let i = index">
         <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex !== i }">
@@ -15,12 +15,12 @@
             </label>
             <textarea
               class="mb-5 text-black bg-gray-200 border-2 rounded h-[15em] text-2xl font-bold ml-1 w-[21em] p-2"
-              [class.border-gray-200]="form.get(question.id)?.untouched"
+              [class.border-gray-200]="formList.get(question.id)?.untouched"
               [class.border-rose-500]="
-                form.get(question.id)?.touched && form.get(question.id)?.invalid
+                formList.get(question.id)?.touched && formList.get(question.id)?.invalid
               "
               [class.border-green-500]="
-                form.get(question.id)?.touched && form.get(question.id)?.valid
+                formList.get(question.id)?.touched && formList.get(question.id)?.valid
               "
               required
               [id]="question.id"
@@ -31,11 +31,11 @@
             ></textarea>
             <ng-container
               *ngIf="
-                form.get(question.id)?.touched && form.get(question.id)?.invalid
+                formList.get(question.id)?.touched && formList.get(question.id)?.invalid
               "
             >
               <p
-                *ngIf="form.get(question.id)?.hasError('required')"
+                *ngIf="formList.get(question.id)?.hasError('required')"
                 class="text-sm italic text-red-600"
               >
                 To pole jest wymagane
@@ -50,12 +50,12 @@
         <button
           class="py-3 px-32 my-10 text-2xl font-bold rounded-xl bg-[#20063B] hover:bg-black text-zinc-50"
           type="submit"
-          [disabled]="form.invalid"
+          [disabled]="formList.invalid"
         >
           Wyślij
         </button>
       </div>
     </div>
   </form>
-  {{ form.value | json }}
+  {{ formList.value | json }}
 </div>

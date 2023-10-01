@@ -11,20 +11,22 @@
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
     <button
+      *ngIf="!hasResults"
       (click)="prevQuestion()"
       class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
     >
       <
     </button>
     <div class="w-[800px]">
-      <app-have-plan-form
+      <app-form
         [activeQuestionIndex]="activeQuestionIndex()"
         *ngIf="!hasResults"
-        (sendRequestEmitter)="getData($event)"
-      ></app-have-plan-form>
-      <app-have-plan-result *ngIf="hasResults"></app-have-plan-result>
+        [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
+      ></app-form>
+      <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
     </div>
     <button
+      *ngIf="!hasResults"
       (click)="nextQuestion()"
       class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
     >
