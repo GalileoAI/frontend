@@ -10,6 +10,7 @@
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
     <button
+      *ngIf="!hasResults"
       (click)="prevQuestion()"
       class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
     >
@@ -24,6 +25,7 @@
       <app-result *ngIf="hasResults" [positionsList]="positionsList"></app-result>
     </div>
     <button
+      *ngIf="!hasResults"
       (click)="nextQuestion()"
       class="relative -top-20 flex items-center justify-center w-16 h-16 rounded-full bg-[#20063B] hover:bg-black text-zinc-50 font-extrabold text-3xl"
     >
