@@ -195,6 +195,10 @@ export class HavePlanComponent implements OnInit{
   }
 
   nextQuestion() {
+    if (this.activeQuestionIndex() === this.questionsList.length - 1) {
+      return;
+    }
+
     this.activeQuestionIndex.set(this.activeQuestionIndex() + 1);
   }
 }
