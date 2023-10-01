@@ -17,8 +17,9 @@ export class QuestionsService {
   public getQuestionsList(type: FormType): Observable<FormInterface> {
     const url = QuestionsService.QUESTIONS_GET_API_URL;
     const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
     const options = {headers};
-    return this.apiService.getData<FormInterface>(url, options).pipe();
+    return this.apiService.getData<FormInterface>(url, options).pipe(take(1));
   }
 
   public postAnswers(body: object): Observable<ResponseInterface> {
@@ -27,6 +28,6 @@ export class QuestionsService {
     headers.set('Content-Type', 'application/json');
     const params = new HttpParams();
     const options = {params};
-    return this.apiService.postData<ResponseInterface>(url, body, options).pipe(take(1));
+    return this.apiService.postData<ResponseInterface>(url, body, options).pipe();
   }
 }

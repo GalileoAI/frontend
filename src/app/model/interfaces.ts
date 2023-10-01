@@ -47,11 +47,19 @@ export interface SearchListInterface {
   list: UniversityInterface[];
 }
 
-export interface CourseInterface {
+export interface ElementInterface {
   name: string;
-  id: any
+  id: string
 }
 
-export interface CoursesListInterface {
-  list: CourseInterface[];
+export interface ElementsListInterface {
+  list: ElementInterface[];
+}
+
+export interface TERCInterface extends ElementInterface {
+  levelName: string;
+}
+
+export interface TERCListInterface {
+  list: TERCInterface[];
 }

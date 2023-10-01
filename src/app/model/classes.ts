@@ -1,9 +1,9 @@
 import {
-  CourseInterface, CoursesListInterface,
+  ElementInterface, ElementsListInterface,
   PositionInterface,
   QuestionInterface,
   SchoolDescriptionInterface,
-  SchoolInterface, SearchListInterface, UniversityInterface
+  SchoolInterface, SearchListInterface, TERCInterface, TERCListInterface, UniversityInterface
 } from "./interfaces";
 
 export class QuestionClass implements QuestionInterface {
@@ -72,18 +72,39 @@ export class SearchListClass implements SearchListInterface {
   }
 }
 
-export class CourseClass implements CourseInterface {
-  id: any;
+export class ElementClass implements ElementInterface {
+  id: string;
   name: string;
-  constructor(id: any, name: string) {
+  constructor(id: string, name: string) {
     this.id = id;
     this.name = name;
   }
 }
 
-export class CoursesListClass implements CoursesListInterface {
-  list: CourseInterface[];
-  constructor(list: CourseInterface[]) {
-    this.list = list.map((el) => new CourseClass(el.id, el.name));
+export class ElementsListClass implements ElementsListInterface {
+  list: ElementInterface[];
+  constructor(list: ElementInterface[]) {
+    this.list = list.map((el) => new ElementClass(el.id, el.name));
   }
 }
+
+export class TERCClass implements TERCInterface {
+  id: string;
+  levelName: string;
+  name: string;
+  constructor(id: string, name: string, levelName: string) {
+    this.id = id;
+    this.name = name;
+    this.levelName = levelName;
+  }
+}
+
+export class TERCListClass implements TERCListInterface {
+  list: TERCInterface[];
+  constructor(list: TERCListInterface) {
+    this.list = list.list.map((el) => {
+      return new TERCClass(el.id, el.name, el.levelName);
+    })
+  }
+}
+

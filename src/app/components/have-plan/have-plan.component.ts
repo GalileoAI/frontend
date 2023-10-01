@@ -1,7 +1,20 @@
 import {FormType} from "../../model/types";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CoursesListClass, PositionClass, QuestionClass, SearchListClass, UniversityClass} from "../../model/classes";
-import {CoursesListInterface, FormInterface, ResponseInterface, SearchListInterface} from "../../model/interfaces";
+import {
+  ElementClass,
+  ElementsListClass,
+  PositionClass,
+  QuestionClass,
+  SearchListClass, TERCClass, TERCListClass,
+  UniversityClass
+} from "../../model/classes";
+import {
+  ElementsListInterface,
+  FormInterface,
+  ResponseInterface,
+  SearchListInterface,
+  TERCListInterface
+} from "../../model/interfaces";
 import {QuestionsService} from "../../services/questions.service";
 import {Observable} from "rxjs";
 import {Component, OnInit, signal} from '@angular/core';
@@ -15,8 +28,14 @@ import {SearchService} from "../../services/search.service";
 export class HavePlanComponent implements OnInit{
   readonly type: FormType = 'after';
   formQuestions = new FormGroup({});
-  universitiesList: UniversityClass[] = [];
-  coursesList: any[] = [];
+  resultsList: UniversityClass[] = [];
+  coursesList: ElementClass[] = [];
+  universitiesList: ElementClass[] = [];
+  levelsList: ElementClass[] = [];
+  voivodeshipsList: TERCClass[] = [];
+  courseFormList: ElementClass[] = [];
+  schoolTypeList: ElementClass[] = [];
+  citiesList: ElementClass[] = [];
   hasResults = false;
   positionsList: PositionClass[] = [];
 
@@ -24,16 +43,46 @@ export class HavePlanComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.getUniveritiesList().subscribe({
+    this.getResultsList().subscribe({
       next: (data) => {
-        this.universitiesList = new SearchListClass(data.list).list;
+        this.resultsList = new SearchListClass(data.list).list;
       }
     });
     this.getCoursesList().subscribe({
       next: (data) => {
-        this.coursesList = new CoursesListClass(data.list).list;
+        this.coursesList = new ElementsListClass(data.list).list;
       }
-    })
+    });
+    this.getLevelsList().subscribe({
+      next: (data) => {
+        this.levelsList = new ElementsListClass(data.list).list;
+      }
+    });
+    this.getUniversitiesList().subscribe({
+      next: (data) => {
+        this.universitiesList = new ElementsListClass(data.list).list;
+      }
+    });
+    this.getCitiesList().subscribe({
+      next: (data) => {
+        this.citiesList = new ElementsListClass(data.list).list;
+      }
+    });
+    this.getCourseFormList().subscribe({
+      next: (data) => {
+        this.courseFormList = new ElementsListClass(data.list).list;
+      }
+    });
+    this.getSchoolTypeList().subscribe({
+      next: (data) => {
+        this.schoolTypeList = new ElementsListClass(data.list).list;
+      }
+    });
+    this.getVoivodeshipList().subscribe({
+      next: (data) => {
+        this.voivodeshipsList = new TERCListClass(data).list
+      }
+    });
   }
 
   getData(e: QuestionClass[])
@@ -41,12 +90,36 @@ export class HavePlanComponent implements OnInit{
     this.hasResults = true;
   }
 
-  private getUniveritiesList(): Observable<SearchListClass> {
+  private getResultsList(): Observable<SearchListInterface> {
     return this.searchService.getSearchList();
   }
 
-  private getCoursesList(): Observable<CoursesListClass> {
+  private getCoursesList(): Observable<ElementsListInterface> {
     return this.searchService.getCoursesList();
+  }
+
+  private getLevelsList(): Observable<ElementsListInterface> {
+    return this.searchService.getLevelsList();
+  }
+
+  private getUniversitiesList(): Observable<ElementsListInterface> {
+    return this.searchService.getUniversitiesList();
+  }
+
+  private getCitiesList(): Observable<ElementsListInterface> {
+    return this.searchService.getCitiesList();
+  }
+
+  private getCourseFormList(): Observable<ElementsListInterface>{
+    return this.searchService.getCourseFormList();
+  }
+
+  private getSchoolTypeList(): Observable<ElementsListInterface>{
+    return this.searchService.getSchoolTypeList();
+  }
+
+  private getVoivodeshipList(): Observable<TERCListInterface> {
+    return this.searchService.getVoivideshipsList();
   }
 
 /*  private postAnswers(data: QuestionClass[]): Observable<ResponseInterface> {
