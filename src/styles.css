@@ -6,6 +6,10 @@ section p {
   margin-bottom: 1rem;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;

@@ -1,6 +1,6 @@
 <div class="py-10">
   <form [formGroup]="formList" (ngSubmit)="send()">
-    <div class="flex overflow-x-scroll" #scrollable>
+    <div class="flex overflow-x-scroll hide-scrollbar" #scrollable>
       <div *ngFor="let question of questionsList; let i = index" class="mb-6">
         <div [ngClass]="{ 'blur-sm scale-75': activeQuestionIndex !== i }">
           <div

@@ -3,3 +3,7 @@ section {
     margin-bottom: 1rem;
   }
 }
+
+.hide-scrollbar::-webkit-scrollbar{
+  display: none;
+}
