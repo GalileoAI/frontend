@@ -6,7 +6,7 @@
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"
   >
     <ng-template #form>
-      <div class="relative -top-20 flex items-center justify-center w-16 h-16">
+      <div class="relative flex items-center justify-center w-16 h-16 -top-20">
         <button
           *ngIf="activeQuestionIndex() > 0"
           (click)="prevQuestion()"
@@ -21,7 +21,7 @@
           [formList]="formQuestions" [questionsList]="questionsList" (sendRequestEmitter)="getData($event)"
         ></app-form>
       </div>
-      <div class="relative -top-20 flex items-center justify-center w-16 h-16">
+      <div class="relative flex items-center justify-center w-16 h-16 -top-20">
         <button
           (click)="nextQuestion()"
           *ngIf="activeQuestionIndex() < questionsList.length"
@@ -32,7 +32,7 @@
       </div>
     </ng-template>
     <ng-template #results>
-      <div class="max-w-5xl md:mx-auto w-full">
+      <div class="w-full max-w-5xl md:mx-auto">
         <app-result [positionsList]="positionsList" [loading]="loading"></app-result>
       </div>
     </ng-template>
