@@ -1,10 +1,10 @@
-# Galileo AI
+# Twój patent na przyszłość
 
-Choose your future with Galileo AI.
+Choose your future with Twój patent na przyszłość by Galileo AI.
 
 ## Purpose
 
-This project is a concept for the Galileo AI website, a tool helping young people to choose their future career path based on their interests and skills.
+This project is a concept for the "Twój patent na przyszłość", a tool helping young people to choose their future career path based on their interests and skills.
 
 ## Demo
 
