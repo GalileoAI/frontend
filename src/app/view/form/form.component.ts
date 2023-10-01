@@ -6,12 +6,12 @@ import {
   OnChanges,
   Output,
   SimpleChanges,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import {QuestionClass} from "../../model/classes";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {QuestionsService} from "../../services/questions.service";
-import {ViewportScroller} from "@angular/common";
+import { QuestionClass } from '../../model/classes';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { QuestionsService } from '../../services/questions.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-form',
@@ -24,12 +24,6 @@ export class FormComponent implements OnChanges {
   @ViewChild('scrollable', { read: ElementRef })
   public scrollable?: ElementRef<any>;
 
-  constructor(
-    private questionsService: QuestionsService,
-    private fb: FormBuilder,
-    private scroller: ViewportScroller
-  ) {}
-
   @Output()
   sendRequestEmitter = new EventEmitter<QuestionClass[]>();
 
@@ -40,40 +34,34 @@ export class FormComponent implements OnChanges {
   questionsList: QuestionClass[] = [];
 
   ngOnChanges(change: SimpleChanges) {
-    if (change['activeQuestionIndex']) {
-      if (
-        change['activeQuestionIndex'].currentValue >
-        change['activeQuestionIndex'].previousValue
-      ) {
+    const index = change['activeQuestionIndex'];
+    if (index) {
+      if (index.currentValue > index.previousValue) {
         this.scrollable?.nativeElement.scrollTo({
-          left: this.scrollable?.nativeElement.scrollLeft + 540,
+          left: this.scrollable?.nativeElement.scrollLeft + 545,
           behavior: 'smooth',
         });
+
+        return;
       }
 
-      if (
-        change['activeQuestionIndex'].currentValue <
-        change['activeQuestionIndex'].previousValue
-      ) {
+      if (index.currentValue < index.previousValue) {
         this.scrollable?.nativeElement.scrollTo({
-          left: this.scrollable?.nativeElement.scrollLeft - 540,
+          left: this.scrollable?.nativeElement.scrollLeft - 545,
           behavior: 'smooth',
         });
+
+        return;
       }
     }
   }
 
-
-  send()
-  {
-    const rnp = Object.entries(this.formList.value).map(
-      ([key, value]) => {
-        const tmp = this.questionsList.find((q) => q.id === key)!;
-        tmp.answer_str = value as string;
-        return tmp;
-      }
-    )
+  send() {
+    const rnp = Object.entries(this.formList.value).map(([key, value]) => {
+      const tmp = this.questionsList.find((q) => q.id === key)!;
+      tmp.answer_str = value as string;
+      return tmp;
+    });
     this.sendRequestEmitter.emit(rnp);
   }
-
 }
