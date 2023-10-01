@@ -30,7 +30,8 @@ import { ViewportScroller } from '@angular/common';
 export class HavePlanFormComponent implements OnInit, OnChanges {
   @Input() activeQuestionIndex = 0;
 
-  @ViewChild('scrollable', { read: ElementRef }) public scrollable?: ElementRef<any>;
+  @ViewChild('scrollable', { read: ElementRef })
+  public scrollable?: ElementRef<any>;
 
   questionsList: QuestionClass[] = [
     {
@@ -42,12 +43,6 @@ export class HavePlanFormComponent implements OnInit, OnChanges {
     {
       answer_str: 'asdasdasd',
       id: '1',
-      question_str:
-        'Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?',
-    },
-    {
-      answer_str: 'asdasdasd',
-      id: '2',
       question_str:
         'Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam?',
     },
@@ -100,7 +95,25 @@ export class HavePlanFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(change: SimpleChanges) {
     if (change['activeQuestionIndex']) {
-      this.scrollable?.nativeElement.scrollTo({ left: (this.scrollable?.nativeElement.scrollLeft + 540), behavior: 'smooth' });
+      if (
+        change['activeQuestionIndex'].currentValue >
+        change['activeQuestionIndex'].previousValue
+      ) {
+        this.scrollable?.nativeElement.scrollTo({
+          left: this.scrollable?.nativeElement.scrollLeft + 540,
+          behavior: 'smooth',
+        });
+      }
+
+      if (
+        change['activeQuestionIndex'].currentValue <
+        change['activeQuestionIndex'].previousValue
+      ) {
+        this.scrollable?.nativeElement.scrollTo({
+          left: this.scrollable?.nativeElement.scrollLeft - 540,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
