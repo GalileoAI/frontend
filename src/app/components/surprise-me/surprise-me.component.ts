@@ -22,20 +22,40 @@ export class SurpriseMeComponent implements OnInit{
     header: 'questionare',
     questions: [
       {
-        id: '1',
-        question_str: 'Pytanie 1',
-        answer_str: ''
+        "id": "1",
+        "question_str": "Jakie są Twoje pasje i zainteresowania?",
+        "answer_str": ""
       },
       {
-        id: '2',
-        question_str: 'Pytanie 2',
-        answer_str: ''
+        "id": "2",
+        "question_str": "Jakie Twoje umiejętności i zdolności wydają Ci się wyróżniające?",
+        "answer_str": ""
       },
       {
-        id: '3',
-        question_str: 'Pytanie 3',
-        answer_str: ''
-      }
+        "id": "3",
+        "question_str": "Które przedmioty w szkole sprawiają Ci najwiecej kłopotów i nie czujesz się w nich dobrze?",
+        "answer_str": ""
+      },
+      {
+        "id": "4",
+        "question_str": "Czy istnieją zawody lub dziedziny, które Cię szczególnie fascynują?",
+        "answer_str": ""
+      },
+      {
+        "id": "5",
+        "question_str": "Czy jesteś zmotywowana/y poświęcić czas i wysiłek na zdobywanie wiedzy?",
+        "answer_str": ""
+      },
+      {
+        "id": "6",
+        "question_str": "Czy masz w głowie cele / marzenia, które chciałabyś / chciałbyś osiągnąć?",
+        "answer_str": ""
+      },
+      {
+        "id": "7",
+        "question_str": "Czy planujesz zdobywać wykształcenie wyższe, uczęszczać na kursy zawodowe czy może rozważasz alternatywne ścieżki kariery?",
+        "answer_str": ""
+      },
     ]
   } as FormInterface
   tempResponse = {
@@ -46,15 +66,24 @@ export class SurpriseMeComponent implements OnInit{
         schools: [
           {
             name: 'Szkoła testowa',
-            description: 'Opis testowy'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           },
           {
             name: 'Szkoła testowa2',
-            description: 'Opis testowy2'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           },
           {
             name: 'Szkoła testowa3',
-            description: 'Opis testowy3'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           }
         ]
       },
@@ -63,15 +92,24 @@ export class SurpriseMeComponent implements OnInit{
         schools: [
           {
             name: 'Lorem ipsum',
-            description: 'Opis testowy2'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           },
           {
             name: 'Lorem ipsum2',
-            description: 'Opis testowy22'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           },
           {
             name: 'Lorem ipsum3',
-            description: 'Opis testowy23'
+            description: {
+              faculty: 'testowy fakulty',
+              website: 'www'
+            }
           }
         ]
       }

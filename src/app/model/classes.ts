@@ -1,4 +1,9 @@
-import {PositionInterface, QuestionInterface, ResponseInterface, SchoolInterface} from "./interfaces";
+import {
+  PositionInterface,
+  QuestionInterface,
+  SchoolDescriptionInterface,
+  SchoolInterface
+} from "./interfaces";
 
 export class QuestionClass implements QuestionInterface {
   answer_str: string;
@@ -11,12 +16,21 @@ export class QuestionClass implements QuestionInterface {
   }
 }
 
+export class SchoolDescriptionClass implements SchoolDescriptionInterface {
+  faculty: string;
+  website: string;
+  constructor(faculty: string, website: string) {
+    this.faculty = faculty;
+    this.website = website;
+  }
+}
+
 export class SchoolClass implements SchoolInterface {
-  description: string;
+  description: SchoolDescriptionClass;
   name: string;
-  constructor(name: string, description: string) {
+  constructor(name: string, description: SchoolDescriptionInterface) {
     this.name = name;
-    this.description = description;
+    this.description = new SchoolDescriptionClass(description.faculty, description.website);
   }
 }
 
