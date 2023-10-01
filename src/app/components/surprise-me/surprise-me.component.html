@@ -1,16 +1,6 @@
 <app-header></app-header>
 <main class="bg-[#461EA4]">
-  <div class="max-w-5xl mx-3 md:mx-auto text-4xl py-10">
-    <a [routerLink]="['/']" class="flex text-sm text-white mb-5">
-      <fa-icon [icon]="['fas', 'arrow-left']" class="mr-4"></fa-icon>
-      Powrót do strony głównej
-    </a>
-    <h1
-      class="font-black text-[#F3F6FD]"
-    >
-      Szukam swojej ścieżki
-    </h1>
-  </div>
+  <app-title [title]="'Szukam swojej ścieżki'"></app-title>
 
   <section
     class="flex items-center justify-between gap-6 mx-3 max-w-7xl md:mx-auto"

@@ -21,6 +21,7 @@ import { PolitykaPrywatnosciComponent } from './components/polityka-prywatnosci/
 import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/warunki-korzystania.component';
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import { TitleComponent } from './view/title/title.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
     SurpriseMeComponent,
     DeklaracjaDostepnosciComponent,
     PolitykaPrywatnosciComponent,
-    WarunkiKorzystaniaComponent
+    WarunkiKorzystaniaComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
