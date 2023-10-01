@@ -22,6 +22,7 @@ import { WarunkiKorzystaniaComponent } from './components/warunki-korzystania/wa
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {TitleComponent} from "./view/title/title.component";
+import {TagifyModule} from "ngx-tagify";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {TitleComponent} from "./view/title/title.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    TagifyModule.forRoot(),
     NgxDatatableModule.forRoot({
       messages: {
         emptyMessage: 'No data to display', // Message to show when array is presented, but contains no values

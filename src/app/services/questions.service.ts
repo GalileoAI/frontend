@@ -9,8 +9,9 @@ import {ApiService} from "./api.service";
   providedIn: 'root'
 })
 export class QuestionsService {
-  public static readonly QUESTIONS_GET_API_URL = 'https://activity-merry-principal-least.trycloudflare.com/app/get';
-  public static readonly QUESTIONS_POST_API_URL = 'https://activity-merry-principal-least.trycloudflare.com/app/post';
+  public static readonly BASE_URL = 'https://qualifications-vault-rating-soul.trycloudflare.com';
+  public static readonly QUESTIONS_GET_API_URL = `${QuestionsService.BASE_URL}/app/get`;
+  public static readonly QUESTIONS_POST_API_URL =  `${QuestionsService.BASE_URL}/app/post`;
 
   constructor(private apiService: ApiService) { }
 

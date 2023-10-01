@@ -1,5 +1,5 @@
 import {FormType} from "../../model/types";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   ElementClass,
   ElementsListClass,
@@ -27,7 +27,9 @@ import {SearchService} from "../../services/search.service";
 })
 export class HavePlanComponent implements OnInit{
   readonly type: FormType = 'after';
-  formQuestions = new FormGroup({});
+  formQuestions = new FormGroup({
+    hobbies: new FormControl()
+  });
   resultsList: UniversityClass[] = [];
   coursesList: ElementClass[] = [];
   universitiesList: ElementClass[] = [];
@@ -38,8 +40,30 @@ export class HavePlanComponent implements OnInit{
   citiesList: ElementClass[] = [];
   hasResults = false;
   positionsList: PositionClass[] = [];
+  hobbiesList = new ElementsListClass([
+    {
+      name: 'administracja',
+      id: ''
+    },
+    {
+      name: 'chemia',
+      id: ''
+    },
+    {
+      name: 'biologia',
+      id: ''
+    },
+    {
+      name: 'automatyka',
+      id: ''
+    },
+    {
+      name: 'ekonomia',
+      id: ''
+    }
+  ]);
 
-  constructor(private searchService: SearchService) {
+  constructor(private searchService: SearchService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
