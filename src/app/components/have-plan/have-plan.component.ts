@@ -171,8 +171,7 @@ export class HavePlanComponent implements OnInit{
     console.log('removed a tag', tags);
   }
 
-  getInput(event: string){
-
+  getInput(event: string) {
   }
 
 }
