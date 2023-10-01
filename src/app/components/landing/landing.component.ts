@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 interface Tile {
+  isDisabled?: boolean;
   title: string;
   icon: string;
   link: string;
@@ -22,6 +23,7 @@ export class LandingComponent {
 
   tiles: Tile[] = [
     {
+      isDisabled: true,
       title: 'Mam na siebie plan',
       icon: '/assets/tile2.png',
       link: '/mam-plan',
